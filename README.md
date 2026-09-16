@@ -37,13 +37,33 @@ python -m http.server 4321
 
 Mở http://127.0.0.1:4321
 
-## Deploy (Vercel)
+## Deploy
+
+Đang chạy trên **GitHub Pages**: <https://vnext-japan-software.github.io/v-ai-jp/>
+
+Nguồn là nhánh `main`, thư mục gốc. Đẩy lên `main` là Pages tự build lại, khoảng
+một phút:
 
 ```bash
-vercel deploy --prod
+git push origin main
 ```
 
-Thư mục gốc là static site, Vercel tự nhận — không cần cấu hình thêm.
+Xem trạng thái build:
+
+```bash
+gh api repos/VNEXT-JAPAN-SOFTWARE/v-ai-jp/pages/builds/latest --jq .status
+```
+
+### Khi gắn tên miền v-ai.jp
+
+1. Trỏ DNS về GitHub Pages (4 bản ghi A: `185.199.108–111.153`, hoặc CNAME
+   `vnext-japan-software.github.io` cho subdomain).
+2. Thêm file `CNAME` ở thư mục gốc chứa đúng một dòng `v-ai.jp`.
+3. Sửa 3 URL trong `<head>` của `index.html` (`canonical`, `og:url`,
+   `og:image`) sang `https://v-ai.jp/` — có sẵn comment đánh dấu ngay trên đó.
+
+Repo đang **public** vì GitHub Pages chỉ hỗ trợ repo public ở gói free của org.
+Muốn giữ private thì chuyển sang Cloudflare Pages hoặc Vercel.
 
 ## Các chỗ cần hoàn thiện
 
@@ -52,7 +72,6 @@ Thư mục gốc là static site, Vercel tự nhận — không cần cấu hìn
 | Form liên hệ | `assets/main.js` | Nối API gửi mail / form service; hiện chỉ validate client-side rồi báo "chưa cấu hình" |
 | 会社概要 | `#company` | Bổ sung 所在地・設立・代表者・電話番号 khi có thông tin chính thức |
 | Privacy policy | footer + form note | Link đang là `#` |
-| OG image | `assets/img/og-image.png` | Chưa có file |
 
 ## Ảnh minh hoạ sản phẩm
 
