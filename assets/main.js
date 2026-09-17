@@ -253,27 +253,175 @@
   }
 
   /* ---------- Contact form ----------
-     送信先は未定。バックエンド（メール送信API / フォームサービス）が決まったら
-     この handler を fetch('/api/contact', …) に差し替えてください。            */
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('form-status');
 
-  if (form && status) {
+     ĐIỀN ENDPOINT VÀO ĐÂY. Trang là static (GitHub Pages) nên không có backend;
+     Formspree nhận POST JSON và chuyển tiếp về hộp thư. Lấy ID ở
+     https://formspree.io/forms → dán nguyên URL dạng
+     'https://formspree.io/f/xxxxxxxx' vào hằng dưới đây.
+
+     Để rỗng thì form vẫn validate đầy đủ nhưng KHÔNG nói dối là đã gửi: nó hiện
+     lời xin lỗi kèm địa chỉ thư trực tiếp. Một form nói "đã gửi" mà không gửi là
+     cách đánh mất khách hàng êm ru nhất có thể.                                */
+  var CONTACT_ENDPOINT = '';
+  var CONTACT_FALLBACK_MAIL = 'info@vnext.co.jp';
+
+  var form = document.getElementById('contact-form');
+  var thanks = document.getElementById('contact-thanks');
+  var failed = document.getElementById('form-failed');
+  var submitBtn = document.getElementById('form-submit');
+  var submitLabel = document.getElementById('form-submit-label');
+  var trap = document.getElementById('f-website');
+  var consent = document.getElementById('f-consent');
+  var consentErr = document.getElementById('f-consent-err');
+
+  /* Luật hợp lệ. `err` là KHOÁ từ điển chứ không phải câu đã dịch: câu lỗi đang
+     hiện phải đổi theo khi người dùng đổi ngôn ngữ, và applyLang() làm việc đó
+     qua data-i18n mà showError() gắn vào chính thẻ lỗi. */
+  var RULES = [
+    { id: 'company',    required: true,  max: 200,  err: 'form.err.company' },
+    { id: 'department', required: false, max: 200 },
+    { id: 'name',       required: true,  max: 200,  err: 'form.err.name' },
+    { id: 'jobtitle',   required: false, max: 200 },
+    // Hai cau khac nhau: o TRONG va o SAI DINH DANG khong phai mot loi.
+    { id: 'email',      required: true,  max: 200,  err: 'form.err.emailRequired', errFormat: 'form.err.email', email: true },
+    { id: 'phone',      required: false, max: 60 },
+    { id: 'message',    required: true,  max: 2000, err: 'form.err.message' }
+  ];
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showError(input, errEl, key) {
+    var text = t(key);
+    if (errEl) {
+      errEl.setAttribute('data-i18n', key);
+      errEl.textContent = text || '';
+      // Thieu khoa tu dien thi GIAU o loi. Mot o do rong ben canh o nhap noi
+      // rang co gi do sai ma khong noi la gi — te hon la khong hien gi ca;
+      // vien do cua chinh o nhap van con, nen nguoi dung van thay dung cho.
+      errEl.hidden = !text;
+    }
+    if (input) {
+      input.setAttribute('aria-invalid', 'true');
+      // Nối CẢ nhãn 必須/任意 LẪN câu lỗi vào ô: một dòng chữ đỏ đặt cạnh ô là
+      // thứ người dùng màn hình đọc không bao giờ nghe thấy nếu không nối.
+      if (errEl) input.setAttribute('aria-describedby', input.id + '-badge ' + errEl.id);
+    }
+  }
+
+  function clearError(input, errEl) {
+    if (errEl) {
+      errEl.hidden = true;
+      errEl.textContent = '';
+      errEl.removeAttribute('data-i18n');
+    }
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.setAttribute('aria-describedby', input.id + '-badge');
+    }
+  }
+
+  function setPhase(phase) {
+    if (!submitBtn || !submitLabel) return;
+    var sending = phase === 'sending';
+    submitBtn.disabled = sending;
+    submitLabel.setAttribute('data-i18n', sending ? 'form.sending' : 'form.submit');
+    submitLabel.textContent = t(sending ? 'form.sending' : 'form.submit') || '';
+  }
+
+  function showFailed(key) {
+    if (!failed) return;
+    failed.setAttribute('data-i18n', key);
+    failed.textContent = (t(key) || '').replace('{mail}', CONTACT_FALLBACK_MAIL);
+    failed.hidden = false;
+  }
+
+  if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (submitBtn && submitBtn.disabled) return;
+      if (failed) failed.hidden = true;
 
-      var required = form.querySelectorAll('[required]');
-      for (var i = 0; i < required.length; i++) {
-        if (!required[i].value.trim() || (required[i].type === 'email' && !required[i].checkValidity())) {
-          status.textContent = t('form.err') || '';
-          status.style.color = '#c2410c';
-          required[i].focus();
-          return;
+      var first = null;
+
+      for (var i = 0; i < RULES.length; i++) {
+        var rule = RULES[i];
+        var input = document.getElementById('f-' + rule.id);
+        var errEl = document.getElementById('f-' + rule.id + '-err');
+        if (!input) continue;
+
+        var value = (input.value || '').trim();
+        var key = null;
+
+        if (rule.required && !value) key = rule.err;
+        else if (value && rule.email && !EMAIL_RE.test(value)) key = rule.errFormat;
+        else if (value.length > rule.max) key = 'form.err.tooLong';
+
+        if (key) {
+          showError(input, errEl, key);
+          if (!first) first = input;
+        } else {
+          clearError(input, errEl);
         }
       }
 
-      status.style.color = '';
-      status.textContent = t('form.todo') || '';
+      if (consent && !consent.checked) {
+        showError(consent, consentErr, 'form.err.consent');
+        if (!first) first = consent;
+      } else {
+        clearError(consent, consentErr);
+      }
+
+      // Không gọi mạng khi form còn lỗi: một 422 từ máy chủ nói cùng một điều mà
+      // chậm hơn một vòng mạng.
+      if (first) { first.focus(); return; }
+
+      // Ô bẫy có chữ nghĩa là bot. Hiện khối cảm ơn mà KHÔNG gửi — nói ra rằng
+      // đã phát hiện là dạy bot cách vượt qua lần sau.
+      if (trap && trap.value) { succeed(); return; }
+
+      var payload = {
+        company: document.getElementById('f-company').value.trim(),
+        department: document.getElementById('f-department').value.trim(),
+        name: document.getElementById('f-name').value.trim(),
+        jobtitle: document.getElementById('f-jobtitle').value.trim(),
+        email: document.getElementById('f-email').value.trim(),
+        phone: document.getElementById('f-phone').value.trim(),
+        product: document.getElementById('f-product').value,
+        message: document.getElementById('f-message').value.trim(),
+        // Thứ tiếng khách ĐANG ĐỌC. Một người đọc bản tiếng Nhật mà nhận thư trả
+        // lời tiếng Anh sẽ hiểu ngay rằng bản tiếng Nhật chỉ là lớp sơn.
+        lang: lang
+      };
+
+      if (!CONTACT_ENDPOINT) { showFailed('form.err.noEndpoint'); return; }
+
+      setPhase('sending');
+      fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        if (!res.ok) throw new Error(String(res.status));
+        succeed();
+      }).catch(function () {
+        // KHÔNG dọn form. Người vừa gõ xong sáu dòng mô tả hệ của họ mà nhận lại
+        // một form trắng sẽ không gõ lại lần thứ hai.
+        setPhase('editing');
+        showFailed('form.err.send');
+      });
     });
   }
+
+  function succeed() {
+    setPhase('editing');
+    if (form) form.hidden = true;
+    if (thanks) {
+      thanks.hidden = false;
+      // Chuyển tiêu điểm sang khối cảm ơn: người đi bằng bàn phím vừa bấm một
+      // nút vừa biến mất, và nếu không dời tiêu điểm thì nó rơi về <body>.
+      thanks.setAttribute('tabindex', '-1');
+      thanks.focus();
+    }
+  }
+
 })();
