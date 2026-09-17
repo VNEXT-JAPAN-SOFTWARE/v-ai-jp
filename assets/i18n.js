@@ -148,7 +148,7 @@ window.I18N = {
     'company.dt1': '商号',
     'company.dd1': 'VNEXT JAPAN株式会社',
     'company.dt2': '事業内容',
-    'company.dd2': 'AIプラットフォーム（V-Brain / V-Kaimei / CAD Check）の開発・提供、システム開発、オフショア開発',
+    'company.dd2': 'AIプラットフォームの開発・提供、システム開発、オフショア開発',
 
     'footer.privacy': 'プライバシーポリシー',
     'footer.copy': '© 2026 VNEXT JAPAN株式会社'
@@ -296,7 +296,7 @@ window.I18N = {
     'company.dt1': 'Legal name',
     'company.dd1': 'VNEXT JAPAN Inc.',
     'company.dt2': 'Business',
-    'company.dd2': 'Development and delivery of the AI platform (V-Brain / V-Kaimei / CAD Check), system development, offshore development',
+    'company.dd2': 'AI platform development and delivery, system development, offshore development',
 
     'footer.privacy': 'Privacy policy',
     'footer.copy': '© 2026 VNEXT JAPAN Inc.'
@@ -444,7 +444,7 @@ window.I18N = {
     'company.dt1': 'Tên pháp nhân',
     'company.dd1': 'Công ty VNEXT JAPAN',
     'company.dt2': 'Lĩnh vực',
-    'company.dd2': 'Phát triển và cung cấp nền tảng AI (V-Brain / V-Kaimei / CAD Check), phát triển hệ thống, phát triển offshore',
+    'company.dd2': 'Phát triển và cung cấp nền tảng AI, phát triển hệ thống, phát triển offshore',
 
     'footer.privacy': 'Chính sách bảo mật',
     'footer.copy': '© 2026 Công ty VNEXT JAPAN'

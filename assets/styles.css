@@ -418,7 +418,11 @@ img{max-width:100%;display:block}
    là form: khách doanh nghiệp Nhật tra thông tin pháp nhân ĐÚNG LÚC quyết định
    có gửi form hay không, nên hai thứ đứng cạnh nhau chứ không ở hai chỗ. */
 
-.contact{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:64px;align-items:start}
+.contact{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:56px;align-items:start}
+/* Cột trái cao 384px, form cao 728px. Không dính thì chênh lệch ấy là một mảng
+   trống 344px ngay chỗ khách quyết định gửi form. Dính lại thì tiêu đề và
+   会社概要 ở trong tầm mắt suốt lúc điền. 96px = 72px thanh trên + khoảng thở. */
+.contact__intro{position:sticky;top:96px}
 .contact h2{margin-top:0;font-size:clamp(28px,3.4vw,38px);line-height:1.3;font-weight:900;color:var(--navy)}
 .contact__lead{margin-top:16px;font-size:15px;line-height:1.9;color:var(--muted)}
 /* min-width:0 de cot trai co lai trong luoi thay vi day rong no. */
@@ -530,7 +534,9 @@ textarea.field__input{resize:vertical;line-height:1.8}
 /* Cột nhãn có bề rộng CỐ ĐỊNH, không co theo nội dung: ba thứ tiếng cho ra ba bề
    rộng nhãn khác nhau (商号 · Tên công ty · Legal name), và cột co theo nội dung
    thì bảng đổi hình mỗi lần đổi ngôn ngữ. */
-.company__table th{width:7.5rem;padding-inline-end:16px;font-weight:400;color:var(--muted)}
+/* 6.5rem vừa đủ cho 事業内容 (4 chữ) và 'Legal name'. 7.5rem thừa 48px, mà 48px
+   ấy lấy thẳng từ ô giá trị vốn đã chật. */
+.company__table th{width:6.5rem;padding-inline-end:16px;font-weight:400;color:var(--muted)}
 .company__table td{color:var(--ink)}
 
 /* ---------- Footer ---------- */
@@ -697,7 +703,7 @@ textarea.field__input{resize:vertical;line-height:1.8}
   /* Nhường chỗ cho thanh điều hướng tiếng Nhật */
   .brand__tag{display:none}
   .split{grid-template-columns:260px minmax(0,1fr);gap:40px}
-  .contact{grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px}
+  .contact{grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:40px}
   .pillars{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -723,7 +729,9 @@ textarea.field__input{resize:vertical;line-height:1.8}
   .products{grid-template-columns:1fr;max-width:620px;margin-inline:auto}
   .split{grid-template-columns:1fr;gap:32px}
   .values > div:last-child{border-bottom:0}
+  /* Một cột: cột trái nằm TRÊN form, dính lại thì nó đè lên form khi cuộn. */
   .contact{grid-template-columns:1fr;gap:48px}
+  .contact__intro{position:static}
   .section{padding:72px var(--gutter)}
 }
 
@@ -743,6 +751,18 @@ textarea.field__input{resize:vertical;line-height:1.8}
   .steps{grid-template-columns:1fr}
   .secgrid{grid-template-columns:1fr}
   .form__row{grid-template-columns:1fr}
+
+  /* Bảng 会社概要 xếp dọc: nhãn trên, giá trị dưới, mỗi thứ dùng trọn bề ngang.
+     Ở màn 320px, cột nhãn 6.5rem ăn 104px trong 265px, chỉ chừa 103px cho giá trị.
+     display:block xoá vai trò bảng khỏi cây khả truy cập ở một số trình duyệt.
+     Chấp nhận đúng ở khổ này và chỉ ở khổ này: một bảng hai dòng đọc được quan
+     trọng hơn việc công bố "cột 1, dòng 2". */
+  .company{padding:20px}
+  .company__table,.company__table tbody,.company__table tr,
+  .company__table th,.company__table td{display:block;width:auto}
+  .company__table tr{padding-block:12px;border-top:1px solid var(--line)}
+  .company__table th,.company__table td{padding-block:0;border-top:0}
+  .company__table th{margin-bottom:4px;padding-inline-end:0}
   /* Duoi 640px cot tu khoa 9rem chi con chua 159px cho chu. Xep doc, va duong
      ray chuyen tu vien phai sang vien trai de tin hieu "mot dong chay" con lai. */
   .values > div{grid-template-columns:1fr;row-gap:10px}
