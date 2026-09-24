@@ -21,7 +21,7 @@
      hơn để đạt WCAG AA. #b42318 trên #e4eefb ~ 6.4:1. */
   --danger:#b42318;
   --gutter:64px;
-  --mono:"Space Grotesk",system-ui,sans-serif;
+  --mono:"Barlow",system-ui,sans-serif;
 
   /* Chuyển động — theo token vnext-ui */
   --dur-fast:150ms;

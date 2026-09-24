@@ -6,9 +6,7 @@
 <title data-i18n="meta.title">VNEXT AI Platform｜AIで、知る・解く・創る。｜V-Brain / V-Kaimei / CAD Check</title>
 <meta name="description" data-i18n-content="meta.desc" content="企業の知識・システム・設計資産をつなぎ、DXを加速するVNEXTのAIプラットフォーム。ナレッジ活用のV-Brain、レガシー解析のV-Kaimei、図面チェックのCAD Check。">
 <meta name="theme-color" content="#0a2550">
-<!-- Khi tên miền v-ai.jp trỏ về đây, đổi 3 URL dưới sang https://v-ai.jp/ -->
 <link rel="canonical" href="https://vnext-japan-software.github.io/v-ai-jp/">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VNEXT AI Platform">
 <meta property="og:title" content="AIで、知る・解く・創る。｜VNEXT AI Platform">
@@ -18,335 +16,482 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="image" href="assets/hero-platform.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+body{margin:0;background:#f4f8fd;font-family:"Noto Sans JP","Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1266c9;text-decoration:none}
+a:hover{color:#0b4a95}
+a[style-hover]{transition:background-color .2s ease,box-shadow .25s ease,transform .15s ease}
+a[style-hover]:active{transform:translateY(1px) scale(.98)}
+a:focus-visible,button:focus-visible{outline:2px solid #1573d6;outline-offset:3px;border-radius:999px}
+@keyframes vfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes vmove{0%{offset-distance:0%;opacity:0}10%{opacity:1}90%{opacity:1}100%{offset-distance:100%;opacity:0}}
+@keyframes vdash{to{stroke-dashoffset:-48}}
+@keyframes vspin{to{transform:rotate(360deg)}}
+@keyframes vspinr{to{transform:rotate(-360deg)}}
+@keyframes vring{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+@keyframes vblink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes vnode{0%,70%,100%{transform:scale(1);opacity:.55}20%{transform:scale(1.5);opacity:1}}
+@keyframes vscany{0%{transform:translateY(0)}100%{transform:translateY(118px)}}
+@keyframes vscanx{0%{left:0%}100%{left:100%}}
+@keyframes vgrowx{0%{transform:scaleX(0)}40%,85%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+@keyframes vpop{0%,25%{transform:scale(0)}35%{transform:scale(1.3)}42%,88%{transform:scale(1)}100%{transform:scale(0)}}
+@keyframes vbarx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes vbeam{0%{left:-25%}100%{left:60%}}
+@keyframes vscancad{0%{left:24%}100%{left:76%}}
+@keyframes vgrowy{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes vdraw{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+@keyframes vdonut{from{stroke-dashoffset:214}to{stroke-dashoffset:32}}
+@keyframes vfade{from{opacity:0}to{opacity:1}}
+@keyframes vtrack{0%{width:0%}70%,100%{width:100%}}
+@keyframes vstep{0%,100%{box-shadow:0 0 0 0 rgba(21,115,214,0);border-color:#d6e5f5}6%,22%{box-shadow:0 0 0 8px rgba(21,115,214,.14);border-color:#1573d6}}
+@media (max-width:1180px){header [data-hdr-tag]{display:none}header nav{gap:14px!important;font-size:12px!important}}
+@media (max-width:1100px){[data-hero]{align-items:flex-start!important;min-height:980px!important}[data-hero-img]{top:auto!important;left:0!important;right:0!important;width:100%!important;height:56%!important;}[data-hero-img]>div:first-child{background-position:center!important}[data-hero-fade-l]{display:none}[data-hero-veil]{display:none}}
+@media (max-width:1000px){header nav,header [data-hdr-lang]{display:none!important}}
+@media (max-width:640px){
+  .vcard{grid-template-columns:minmax(0,1fr) auto!important;padding:18px 20px!important}
+  .vcard>:first-child{display:none!important}
+  .proc-track{display:none}
+  .proc-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .proc-step{display:grid!important;grid-template-columns:56px minmax(0,1fr) auto;text-align:left!important;gap:14px!important}
+  .proc-step>div:first-child{width:56px!important;height:56px!important}
+  .proc-step>div:first-child svg{width:24px;height:24px}
+}
+@media (min-width:1024px) and (max-width:1279px){
+  .pcard__foot{flex-direction:column;align-items:stretch!important;gap:14px!important}
+  .pcard__foot a{justify-content:center}
+}
+/* Hero photo: full-bleed, dissolves into the hero with a soft elliptical mask
+   (no colored overlays, so no seams; the platform tile at the centre stays at full clarity) */
+.hero-photo{
+  background-position:calc(22% - 30px) 42%!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 18%,#000 40%),linear-gradient(180deg,rgba(0,0,0,.25) 0,#000 20%,#000 64%,transparent 100%),radial-gradient(ellipse 85% 80% at 62% 42%,#000 60%,transparent 100%);
+  -webkit-mask-composite:source-in,source-in;
+  mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.5) 18%,#000 40%),linear-gradient(180deg,rgba(0,0,0,.25) 0,#000 20%,#000 64%,transparent 100%),radial-gradient(ellipse 85% 80% at 62% 42%,#000 60%,transparent 100%);
+  mask-composite:intersect}
+@media (max-width:1100px){
+  .hero-photo{background-position:center 45%!important;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.6) 14%,#000 30%,#000 70%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.6) 14%,#000 30%,#000 70%,transparent 100%)}
+}
+/* Product cards: a bit larger on wide desktops */
+@media (min-width:1280px){
+  .pgrid{max-width:1320px!important;gap:24px!important}
+  .pcard__body{padding:30px 30px 30px!important;gap:16px!important}
+  .pcard__body>p{font-size:14.5px!important}
+  .pcard__body>div:first-child{font-size:15px!important}
+  .pcard__body span[style*="border-radius:999px"]{font-size:12.5px!important;padding:8px 12px!important}
+  .pcard__foot a{font-size:13.5px!important;padding:14px 20px!important}
+}
+/* Responsive: tablet */
+@media (min-width:641px) and (max-width:1023px){
+  .pgrid{grid-template-columns:1fr!important;gap:18px!important;max-width:760px!important}
+  .pcard{flex-direction:row!important}
+  .pcard__media{flex:0 0 42%;aspect-ratio:auto!important;border-bottom:0!important;border-right:1px solid rgba(14,62,120,.08)}
+  .sec-grid{grid-template-columns:1fr 1fr!important}
+  .sec-grid>:first-child{grid-column:1/-1}
+}
+/* Responsive: phone */
+@media (max-width:640px){
+  #contact{overflow-x:clip}
+  [style*="padding:0 28px"]{padding-left:20px!important;padding-right:20px!important}
+  .hero-inner{padding:36px 20px 290px!important}
+  .pgrid{margin-top:-70px!important}
+  .hero-h1{font-size:clamp(30px,9.4vw,42px)!important}
+  .hero-inner p{font-size:16px!important}
+  [data-hero]{min-height:0!important}
+  [data-hero-img]{height:320px!important}
+  .sec-radar{display:none!important}
+  .sec-grid{gap:24px!important}
+}
+/* Product cards */
+.pcard{position:relative;isolation:isolate;box-shadow:0 14px 34px var(--shadow);
+  transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1),opacity .6s cubic-bezier(.16,1,.3,1),translate .6s cubic-bezier(.16,1,.3,1)!important;
+  transition-delay:0s,0s,calc(var(--i,0) * 120ms),calc(var(--i,0) * 120ms)!important}
+.js .pcard.reveal{translate:0 36px}
+.pcard.reveal.is-in{translate:0}
+.pcard::after{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s ease;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent2) 22%,transparent),transparent 60%);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--accent) 45%,transparent)}
+.pcard__media img{transition:transform .9s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover){
+  .pcard:hover{transform:translateY(-8px);box-shadow:0 32px 64px var(--glow),0 2px 6px var(--shadow)}
+  .pcard:hover::after{opacity:1}
+  .pcard:hover .pcard__media img{transform:scale(1.05)}
+}
+@media (prefers-reduced-motion:reduce){
+  .pcard,.pcard__media img{transition:none!important}
+  .pcard:hover{transform:none}
+  .pcard:hover .pcard__media img{transform:none}
+}
+/* Footer */
+.ft{position:relative;color:#cfe2f5;background:#061129;border-top:1px solid rgba(142,203,255,.12)}
+.ft__inner{position:relative;max-width:1240px;margin:0 auto;padding:40px 28px 24px}
+.ft__top{display:flex;align-items:center;justify-content:space-between;gap:24px 48px;flex-wrap:wrap}
+.ft__brand{display:flex;align-items:center;gap:16px}
+.ft__brand img{display:block;height:26px;width:auto}
+.ft__tag{margin:0;padding-left:16px;border-left:1px solid rgba(255,255,255,.2);font:500 13px/1.3 Barlow,sans-serif;color:#b3cde6}
+.ft__nav{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 8px}
+.ft__nav a,.ft__totop{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:8px;
+  font:500 14px/1 'Noto Sans JP',sans-serif;color:#d6e6f7;transition:color .2s ease,background-color .2s ease}
+.ft__nav a:hover,.ft__totop:hover{color:#fff;background:rgba(255,255,255,.08)}
+.ft a:focus-visible{outline:2px solid #8ecbff;outline-offset:2px;border-radius:8px}
+.ft__bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:28px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12)}
+.ft__bottom small{font:400 13px/1.5 'Noto Sans JP',sans-serif;color:#a3bbd6}
+.ft__totop{gap:6px;font-size:13px;color:#a3bbd6;margin-right:-10px}
+@media (max-width:640px){
+  .ft__inner{padding:32px 16px 20px}
+  .ft__brand{flex-direction:column;align-items:flex-start;gap:10px}
+  .ft__tag{padding-left:0;border-left:0}
+  .ft nav{width:100%}
+  .ft__nav{display:grid;grid-template-columns:1fr 1fr;gap:0 8px;margin-left:-10px}
+}
+/* Contact section dark-mode overrides (skyline bg) */
+.section--contact .contact h2,.section--contact h2{color:#fff!important}
+.section--contact .contact__lead{color:#cde0f8!important}
+.section--contact .company h3{color:#e2efff!important}
+.section--contact .company__table th{color:#9dc4e8!important}
+.section--contact .company__table td{color:#d6e9ff!important}
+.section--contact .company__table th,.section--contact .company__table td{border-bottom-color:rgba(255,255,255,.1)!important}
+.section--contact .field__label{color:#ddeeff!important}
+.section--contact .field__badge[data-required="true"]{background:rgba(100,180,255,.15);color:#7ec6ff!important}
+.section--contact .field__badge[data-required="false"]{color:#7ec6ff!important}
+.section--contact .field__input{background:rgba(8,22,48,.72);border-color:rgba(255,255,255,.22);color:#fff!important;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.section--contact .field__input::placeholder{color:rgba(214,230,250,.62)!important}
+.section--contact .field__input:focus-visible{border-color:#4da8ff;box-shadow:0 0 0 3px rgba(77,168,255,.25)}
+.section--contact .consent__text{color:#cde0f8!important}
+.section--contact .consent__mark{border-color:rgba(255,255,255,.35)!important;background:rgba(255,255,255,.08)!important}
+.section--contact .form__note{color:#9dc4e8!important}
+.section--contact .thanks h3{color:#fff!important}
+.section--contact .thanks p{color:#cde0f8!important}
+.section--contact .company{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.section--contact .btn-submit{background:#1573d6;box-shadow:0 10px 26px rgba(21,115,214,.35)}
+.section--contact .btn-submit:hover{background:#0f5cb0}
+.section--contact .field__error,.section--contact .form__failed{color:#ffb4a8!important}
+.section--contact .form__failed{background:rgba(255,120,100,.1);border-color:rgba(255,150,130,.4)}
+.section--contact .field__input[aria-invalid="true"],.section--contact .consent__box[aria-invalid="true"] + .consent__mark{border-color:#ff8a7a!important}
+</style>
 <link rel="icon" type="image/png" href="assets/vnext/vnext-favicon-64.png">
 <link rel="apple-touch-icon" href="assets/vnext/vnext-favicon-180.png">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="brand" href="#top" data-i18n-aria="nav.aria.home" aria-label="VNEXT ホームへ">
-      <img class="brand__logo" src="assets/vnext/vnext-logo-horizontal.svg" alt="VNEXT" width="99" height="28">
-      <span class="brand__tag">Beyond IT, for a Better Tomorrow</span>
-    </a>
-
-    <nav class="site-nav" id="site-nav">
-      <a href="#products" data-i18n="nav.products">プロダクト</a>
-      <a href="#platform" data-i18n="nav.platform">プラットフォーム</a>
-      <a href="#value" data-i18n="nav.value">提供価値</a>
-      <a href="#steps" data-i18n="nav.steps">導入の流れ</a>
-      <a href="#security" data-i18n="nav.security">セキュリティ</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    </nav>
-
-    <div class="header__actions">
-      <div class="lang" id="lang-switch">
-        <button class="lang__btn" id="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" data-i18n-aria="nav.aria.lang" aria-label="言語の切り替え">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
-          <span class="lang__code" id="lang-code">JA</span>
-          <svg class="lang__caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <ul class="lang__menu" id="lang-menu" hidden>
-          <li><button type="button" data-lang="ja" aria-pressed="true" lang="ja">日本語 <i>JA</i></button></li>
-          <li><button type="button" data-lang="en" aria-pressed="false" lang="en">English <i>EN</i></button></li>
-          <li><button type="button" data-lang="vi" aria-pressed="false" lang="vi">Tiếng Việt <i>VI</i></button></li>
-        </ul>
-      </div>
-      <a class="btn-contact" href="#contact"><span data-i18n="nav.contact">お問い合わせ</span> <span class="arrow">→</span></a>
-      <button class="nav-toggle" id="nav-toggle" type="button" data-i18n-aria="nav.aria.open" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav"><span></span></button>
-    </div>
+<header style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(14,62,120,.08)">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center;gap:22px">
+  <div style="display:flex;align-items:center;gap:12px;flex:none">
+    <img src="assets/vnext-logo-horizontal.svg" alt="VNEXT" style="height:28px;width:auto;display:block">
+    <span data-hdr-tag="1" style="width:1px;height:26px;background:rgba(14,62,120,.18)"></span>
+    <span data-hdr-tag="1" style="font:500 9.5px/1.35 Barlow,sans-serif;color:#5b7699">Beyond IT,<br>for a Better Tomorrow</span>
   </div>
+  <nav style="display:flex;align-items:center;gap:24px;margin-left:auto;font:500 13px/1 'Noto Sans JP',sans-serif;white-space:nowrap">
+    <a href="#products" style="color:#254a77">プロダクト</a>
+    <a href="#platform" style="color:#254a77">プラットフォーム</a>
+    <a href="#value" style="color:#254a77">提供価値</a>
+    <a href="#process" style="color:#254a77">導入の流れ</a>
+    <a href="#security" style="color:#254a77">セキュリティ</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:16px;flex:none;margin-left:auto">
+    <div data-hdr-lang="1" style="display:flex;align-items:center;gap:6px;font:600 13px/1 Barlow,sans-serif;color:#254a77">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2a72cc" stroke-width="1.7"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"></path></svg>JA
+    </div>
+    <a href="#contact" style="display:flex;align-items:center;gap:9px;background:#1573d6;color:#fff;font:700 13px/1 'Noto Sans JP',sans-serif;padding:12px 20px;border-radius:999px;box-shadow:0 6px 16px rgba(21,115,214,.3)" style-hover="background:#0f5cb0;color:#fff">無料で相談する <span style="font-family:Barlow">→</span></a>
+  </div>
+</div>
 </header>
 
-<main id="top">
-
-<!-- ===================== HERO ===================== -->
-<section id="products" class="hero">
-  <div class="hero__aura" aria-hidden="true"></div>
-  <div class="hero__head">
-    <h1 class="reveal" data-i18n-html="hero.h1">AIで、<em>知る・解く・創る</em>。</h1>
-    <p class="hero__sub reveal" data-i18n="hero.sub">企業の知識・システム・設計資産をつなぎ、DXを加速する</p>
-    <p class="hero__rule reveal">
-      <i></i><span>One Platform. Greater Possibilities.</span><i></i>
-    </p>
+<!-- HERO -->
+<section id="platform" data-hero="1" style="position:relative;overflow:hidden;background:linear-gradient(180deg,#e4f1fd,#f1f8fe);min-height:clamp(580px,46vw,860px);display:flex;align-items:center">
+  <div data-hero-img="1" style="position:absolute;top:0;bottom:0;right:0;left:calc(max(0px, (100% - 1240px) / 2) + 440px);pointer-events:none">
+    <div class="hero-photo" style="position:absolute;inset:0;background:url('assets/hero-platform.webp') 38% center/cover no-repeat;"></div>
   </div>
-
-  <div class="products">
-
-    <!-- V-Brain -->
-    <article class="card card--brain reveal">
-      <p class="card__lead" data-i18n="brain.lead">企業の知識を、力に。</p>
-      <div class="card__id">
-        <svg viewBox="0 0 100 100" width="64" height="64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="br-leg" gradientUnits="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#2d7cf6"/><stop offset="1" stop-color="#0a3d91"/></linearGradient>
-            <linearGradient id="br-blade" gradientUnits="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#1e63d6"/><stop offset=".42" stop-color="#3d8bff"/><stop offset="1" stop-color="#6fc3ff"/></linearGradient>
-          </defs>
-          <path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#br-leg)"/>
-          <path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#br-blade)" stroke="url(#br-blade)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <span class="card__id-text">
-          <span class="card__name">V-Brain</span>
-          <span class="card__en">Accelerate Enterprise DX with AI</span>
-        </span>
+  <div data-hero-veil="1" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(236,246,254,.95) 0%,rgba(236,246,254,.85) 34%,rgba(236,246,254,0) 46%);pointer-events:none"></div>
+  <div class="hero-inner" style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:56px 28px 190px">
+    <div data-hero-text="1" style="max-width:520px">
+      <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(21,115,214,.18);font:700 11.5px/1 Barlow,sans-serif;letter-spacing:.14em;color:#1366c9">VNEXT AI PLATFORM</div>
+      <h1 class="hero-h1" style="margin:22px 0 0;font:900 clamp(40px,4.4vw,56px)/1.12 'Noto Sans JP',sans-serif;letter-spacing:-.01em;color:#0b2f6b">AIで、<br><span style="white-space:nowrap"><span style="color:#1366c9">知る</span><span style="color:#8fb4d8">・</span><span style="color:#1f9e6b">解く</span><span style="color:#8fb4d8">・</span><span style="color:#e8862a">創る</span>。</span></h1>
+      <p style="margin:24px 0 0;font:700 19px/1.75 'Noto Sans JP',sans-serif;color:#17406f">企業の知識・システム・設計資産をつなぎ、<br>DXを加速する。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
+        <a href="#contact" style="display:flex;align-items:center;gap:10px;background:#1573d6;color:#fff;font:700 14px/1 'Noto Sans JP',sans-serif;padding:16px 26px;border-radius:999px;box-shadow:0 10px 26px rgba(21,115,214,.35)" style-hover="background:#0f5cb0;color:#fff">無料で相談する <span style="font-family:Barlow">→</span></a>
+        <a href="#products" style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.75);color:#0b2f6b;font:700 14px/1 'Noto Sans JP',sans-serif;padding:16px 24px;border-radius:999px;border:1px solid rgba(21,115,214,.2)" style-hover="background:#fff;color:#0b2f6b">プロダクトを見る</a>
       </div>
-      <p class="card__desc" data-i18n="brain.desc">社内・社外のあらゆる情報をつなぎ、探し、理解し、活用するAIナレッジプラットフォーム</p>
-
-      <picture class="shot">
-        <source srcset="assets/img/shot-brain.webp" type="image/webp">
-        <img src="assets/img/shot-brain.png" width="800" height="500" decoding="async" data-i18n-alt="brain.alt" alt="社内外の文書とデータベースが一つのAI基盤に集まり、出典番号付きの回答として出力される概念図">
-      </picture>
-
-      <div class="tags">
-        <span data-i18n="brain.tag1">ナレッジ検索</span><span data-i18n="brain.tag2">RAG/生成AI</span><span data-i18n="brain.tag3">社内データ活用</span><span data-i18n="brain.tag4">業務効率化</span><span data-i18n="brain.tag5">セキュアな環境</span>
-      </div>
-      <a class="card__cta" href="https://brain.v-ai.jp"><span data-i18n="brain.cta">V-Brain を詳しく見る</span> <span class="arrow">→</span></a>
-    </article>
-
-    <!-- V-Kaimei -->
-    <article class="card card--kaimei reveal">
-      <p class="card__lead" data-i18n="kaimei.lead">レガシーを、未来の力に。</p>
-      <div class="card__id">
-        <svg viewBox="0 0 100 100" width="64" height="64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="km-leg" gradientUnits="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#f0511e"/><stop offset="1" stop-color="#c8281c"/></linearGradient>
-            <linearGradient id="km-blade" gradientUnits="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#f0511e"/><stop offset=".42" stop-color="#f97a1f"/><stop offset="1" stop-color="#ffb21e"/></linearGradient>
-          </defs>
-          <path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#km-leg)"/>
-          <path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#km-blade)" stroke="url(#km-blade)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <span class="card__id-text">
-          <span class="card__name">V-Kaimei</span>
-          <span class="card__en">AI Legacy System Intelligence</span>
-        </span>
-      </div>
-      <p class="card__desc" data-i18n="kaimei.desc">既存システムをAIで解析し、見える化・ドキュメント化。モダナイゼーションへの第一歩を支援</p>
-
-      <picture class="shot">
-        <source srcset="assets/img/shot-kaimei.webp" type="image/webp">
-        <img src="assets/img/shot-kaimei.png" width="800" height="500" decoding="async" data-i18n-alt="kaimei.alt" alt="レガシーなサーバーとソースコードがAI解析を経て、システム構造図・業務フロー・ドキュメントに変わる概念図">
-      </picture>
-
-      <div class="tags">
-        <span data-i18n="kaimei.tag1">システム解析</span><span data-i18n="kaimei.tag2">ドキュメント自動生成</span><span data-i18n="kaimei.tag3">影響分析</span><span data-i18n="kaimei.tag4">モダナイゼーション支援</span><span data-i18n="kaimei.tag5">技術継承</span>
-      </div>
-      <a class="card__cta" href="https://kaimei.v-ai.jp"><span data-i18n="kaimei.cta">V-Kaimei を詳しく見る</span> <span class="arrow">→</span></a>
-    </article>
-
-    <!-- CAD Check -->
-    <article class="card card--cad reveal">
-      <p class="card__addon"><span data-i18n="cad.addon">V-Brain アドオン</span></p>
-      <p class="card__lead" data-i18n="cad.lead">設計の品質を、確かなものに。</p>
-      <div class="card__id">
-        <svg viewBox="0 0 100 100" width="64" height="64" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="cd-leg" gradientUnits="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#22a35a"/><stop offset="1" stop-color="#0e6b3a"/></linearGradient>
-            <linearGradient id="cd-blade" gradientUnits="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#1f9d55"/><stop offset=".42" stop-color="#3bbf7a"/><stop offset="1" stop-color="#4fd1c5"/></linearGradient>
-          </defs>
-          <path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#cd-leg)"/>
-          <path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#cd-blade)" stroke="url(#cd-blade)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <span class="card__id-text">
-          <span class="card__name">CAD Check</span>
-          <span class="card__en">AI-Powered Design Quality Assurance</span>
-        </span>
-      </div>
-      <p class="card__desc" data-i18n="cad.desc">図面・設計書をAIで自動チェック。ミスの防止と品質の標準化で、より安全で持続可能な社会インフラを支える</p>
-
-      <picture class="shot">
-        <source srcset="assets/img/shot-cad.webp" type="image/webp">
-        <img src="assets/img/shot-cad.png" width="800" height="500" decoding="async" data-i18n-alt="cad.alt" alt="構造図面を拡大鏡で検査し、不整合箇所を赤とオレンジのマーカーで指摘し、チェック項目に合格印が付く概念図">
-      </picture>
-
-      <div class="tags">
-        <span data-i18n="cad.tag1">図面チェック</span><span data-i18n="cad.tag2">AI自動検出</span><span data-i18n="cad.tag3">品質の標準化</span><span data-i18n="cad.tag4">手戻り削減</span><span data-i18n="cad.tag5">設計ナレッジの蓄積</span>
-      </div>
-      <a class="card__cta" href="https://brain.v-ai.jp/cad"><span data-i18n="cad.cta">CAD Check を詳しく見る</span> <span class="arrow">→</span></a>
-    </article>
-  </div>
-
-  <!-- ===================== PLATFORM BAND ===================== -->
-  <div id="platform" class="platform">
-    <span class="platform__line" aria-hidden="true"></span>
-    <div class="platform__badge-row">
-      <p class="platform__badge reveal reveal--scale">VNEXT AI Platform</p>
-    </div>
-    <p class="platform__copy reveal" data-i18n="platform.copy">3つのプロダクトは、認証・アクセス権限・ログ・日本語対応LLM基盤を共有する一つのプラットフォーム上で動きます。導入は1製品から、拡張はデータを移さずに。</p>
-
-    <ul class="pillars">
-      <li class="reveal">
-        <i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6fc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></i>
-        <b data-i18n="platform.p1">業務の生産性向上</b>
-      </li>
-      <li class="reveal">
-        <i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6fc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></i>
-        <b data-i18n="platform.p2">知識・技術の継承</b>
-      </li>
-      <li class="reveal">
-        <i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6fc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></i>
-        <b data-i18n="platform.p3">システムの持続可能性</b>
-      </li>
-      <li class="reveal">
-        <i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6fc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></i>
-        <b data-i18n="platform.p4">社会インフラの発展</b>
-      </li>
-      <li class="reveal">
-        <i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6fc3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></i>
-        <b data-i18n="platform.p5">よりよい社会へ</b>
-      </li>
-    </ul>
-
-    <div class="platform__motto reveal">
-      <p>TECHNOLOGY FOR A MORE HUMAN TOMORROW</p>
-      <p data-i18n="platform.motto">テクノロジーで、人にやさしい未来をつくる</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== 01 VALUE ===================== -->
-<section id="value" class="section section--light">
-  <div class="section__inner split">
+<!-- PRODUCTS -->
+<section id="products" style="position:relative;z-index:2;background:linear-gradient(180deg,rgba(241,248,254,0) 0,#f1f8fe 170px,#eaf4fd 100%);padding:0 0 60px">
+<div class="pgrid" style="max-width:1240px;margin:-150px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px">
+
+  <!-- V-Brain -->
+  <article class="pcard reveal" style="--i:0;--accent:#1573d6;--accent2:#5bb4ff;--glow:rgba(21,115,214,.30);--shadow:rgba(20,70,140,.10);border-radius:18px;overflow:hidden;background:linear-gradient(165deg,rgba(227,240,253,.82),rgba(246,250,255,.94) 40%,#eef6ff);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column">
+    <div class="pcard__media" style="position:relative;aspect-ratio:8/5;overflow:hidden;border-bottom:1px solid rgba(14,62,120,.08)">
+      <img src="assets/shot-brain.webp" loading="lazy" alt="社内外の文書とデータがAI基盤に集まり、出典付きで回答される図" width="800" height="500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" decoding="async">
+      <svg viewBox="0 0 800 500" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+        <circle cx="400" cy="232" r="40" fill="none" stroke="#3b8fe0" stroke-width="3" opacity="0"><animate attributeName="r" values="40;110" dur="2.6s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="2.6s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="400" cy="232" r="40" fill="none" stroke="#3b8fe0" stroke-width="3" opacity="0"><animate attributeName="r" values="40;110" dur="2.6s" begin="1.3s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"></animate></circle>
+        <circle r="5" fill="#2a86e0" opacity="0"><animateMotion path="M145 120 C250 120 290 205 362 212" dur="2.2s" begin="0s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.2s" begin="0s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#2a86e0" opacity="0"><animateMotion path="M240 130 C300 140 320 205 362 220" dur="2.2s" begin="0.35s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.2s" begin="0.35s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#2a86e0" opacity="0"><animateMotion path="M185 210 C260 215 300 226 362 228" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.2s" begin="0.7s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#2a86e0" opacity="0"><animateMotion path="M270 235 C310 235 330 232 362 234" dur="2.2s" begin="1.0499999999999998s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.2s" begin="1.0499999999999998s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#2a86e0" opacity="0"><animateMotion path="M265 300 C310 290 330 252 362 244" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.2s" begin="1.4s" repeatCount="indefinite"></animate></circle>
+        <circle r="6" fill="#1462b8" opacity="0"><animateMotion path="M440 234 C500 234 520 222 575 222" dur="1.6s" begin="0.4s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="1.6s" begin="0.4s" repeatCount="indefinite"></animate></circle><circle r="6" fill="#1462b8" opacity="0"><animateMotion path="M440 234 C500 234 520 222 575 222" dur="1.6s" begin="1.2s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="1.6s" begin="1.2s" repeatCount="indefinite"></animate></circle>
+        <circle cx="604" cy="276" r="14" fill="none" stroke="#0a3d91" stroke-width="2.5" opacity="0"><animate attributeName="r" values="14;30" dur="3s" begin="1s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1s" repeatCount="indefinite"></animate></circle><circle cx="650" cy="278" r="14" fill="none" stroke="#0a3d91" stroke-width="2.5" opacity="0"><animate attributeName="r" values="14;30" dur="3s" begin="1.5s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1.5s" repeatCount="indefinite"></animate></circle><circle cx="697" cy="281" r="14" fill="none" stroke="#0a3d91" stroke-width="2.5" opacity="0"><animate attributeName="r" values="14;30" dur="3s" begin="2s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="2s" repeatCount="indefinite"></animate></circle>
+        <circle cx="615" cy="330" r="11" fill="none" stroke="#22a35a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="11;22" dur="3s" begin="1.2s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1.2s" repeatCount="indefinite"></animate></circle><circle cx="652" cy="334" r="11" fill="none" stroke="#22a35a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="11;22" dur="3s" begin="1.7s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1.7s" repeatCount="indefinite"></animate></circle><circle cx="692" cy="339" r="11" fill="none" stroke="#22a35a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="11;22" dur="3s" begin="2.2s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="2.2s" repeatCount="indefinite"></animate></circle>
+      </svg>
+    </div>
+    <div class="pcard__body" style="padding:24px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div style="font:700 14px/1 'Noto Sans JP',sans-serif;color:#1366c9">企業の知識を、力に。</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg viewBox="0 0 100 100" width="40" height="40" fill="none" aria-hidden="true" style="flex:none"><defs><linearGradient id="v3br-l" sc-camel-gradient-units="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#2d7cf6"></stop><stop offset="1" stop-color="#0a3d91"></stop></linearGradient><linearGradient id="v3br-b" sc-camel-gradient-units="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#1e63d6"></stop><stop offset=".42" stop-color="#3d8bff"></stop><stop offset="1" stop-color="#6fc3ff"></stop></linearGradient></defs><path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#v3br-l)"></path><path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#v3br-b)" stroke="url(#v3br-b)" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div><div style="font:800 30px/1.05 Barlow,sans-serif;letter-spacing:-.01em;color:#0b2f6b">V-Brain</div><div style="font:600 11.5px/1.3 Barlow,sans-serif;color:#4d7099">Accelerate Enterprise DX with AI</div></div>
+      </div>
+      <p style="margin:0;font:500 13px/1.85 'Noto Sans JP',sans-serif;color:#1c4570">社内外のあらゆる情報をつなぎ、探し、理解し、活用するAIナレッジプラットフォーム。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#dcecfd;padding:7px 10px;border-radius:999px">RAG／生成AI</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#dcecfd;padding:7px 10px;border-radius:999px">文書・マニュアル検索</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#dcecfd;padding:7px 10px;border-radius:999px">データ統合</span>
+      </div>
+      <div class="pcard__foot" style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(35,110,190,.14);display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div><div style="font:800 34px/1 Barlow,sans-serif;letter-spacing:-.02em;color:#1366c9"><span data-count="70" data-prefix="−">−70</span><span style="font-size:18px">%</span></div><div style="font:500 11.5px/1.4 'Noto Sans JP',sans-serif;color:#4d7099;margin-top:4px">情報検索の時間</div></div>
+        <a href="https://brain.v-ai.jp" style="display:flex;align-items:center;gap:8px;background:#1573d6;color:#fff;font:700 12.5px/1 'Noto Sans JP',sans-serif;padding:12px 18px;border-radius:999px;white-space:nowrap" style-hover="background:#0f5cb0;color:#fff">V-Brain を詳しく見る →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- V-Kaimei -->
+  <article class="pcard reveal" style="--i:1;--accent:#e8862a;--accent2:#ffc06b;--glow:rgba(232,134,42,.32);--shadow:rgba(160,100,30,.12);border-radius:18px;overflow:hidden;background:linear-gradient(165deg,rgba(253,240,221,.82),rgba(255,249,240,.94) 40%,#fdf3e6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column">
+    <div class="pcard__media" style="position:relative;aspect-ratio:8/5;overflow:hidden;border-bottom:1px solid rgba(14,62,120,.08)">
+      <img src="assets/shot-kaimei.webp" loading="lazy" alt="レガシーなサーバーとコードがAI解析を経て構造図とドキュメントに変わる図" width="800" height="500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" decoding="async">
+      <div style="position:absolute;top:-10%;bottom:-10%;left:0;width:22%;background:linear-gradient(90deg,transparent,rgba(255,190,110,.55),rgba(255,255,255,.7),rgba(255,190,110,.55),transparent);transform:skewX(-18deg);mix-blend-mode:screen;animation:vbeam 3.6s ease-in-out infinite;pointer-events:none"></div>
+      <svg viewBox="0 0 800 500" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+        <circle r="5" fill="#f97316" opacity="0"><animateMotion path="M372 190 C420 190 440 165 470 162" dur="1.6s" begin="0s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="1.6s" begin="0s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#f97316" opacity="0"><animateMotion path="M378 240 C420 240 440 218 470 216" dur="1.6s" begin="0.4s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="1.6s" begin="0.4s" repeatCount="indefinite"></animate></circle><circle r="5" fill="#f97316" opacity="0"><animateMotion path="M372 275 C420 280 440 318 470 318" dur="1.6s" begin="0.8s" repeatCount="indefinite"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="1.6s" begin="0.8s" repeatCount="indefinite"></animate></circle>
+        <rect x="498" y="332" width="42" height="32" rx="5" fill="none" stroke="#f97316" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2.4s" begin="0s" repeatCount="indefinite"></animate></rect><rect x="546" y="332" width="42" height="32" rx="5" fill="none" stroke="#f97316" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2.4s" begin="0.6s" repeatCount="indefinite"></animate></rect><rect x="594" y="332" width="42" height="32" rx="5" fill="none" stroke="#f97316" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"></animate></rect><rect x="642" y="332" width="42" height="32" rx="5" fill="none" stroke="#f97316" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2.4s" begin="1.7999999999999998s" repeatCount="indefinite"></animate></rect>
+        <rect x="584" y="114" width="70" height="36" rx="6" fill="none" stroke="#f97316" stroke-width="3" opacity="0"><animate attributeName="opacity" values="0;1;0" dur="2.4s" begin=".2s" repeatCount="indefinite"></animate></rect>
+        <circle cx="140" cy="212" r="3" fill="#6ee7b7"><animate attributeName="opacity" values="1;.15;1" dur="1s" repeatCount="indefinite"></animate></circle><circle cx="140" cy="232" r="3" fill="#6ee7b7"><animate attributeName="opacity" values="1;.15;1" dur="1.25s" repeatCount="indefinite"></animate></circle><circle cx="140" cy="252" r="3" fill="#6ee7b7"><animate attributeName="opacity" values="1;.15;1" dur="1.5s" repeatCount="indefinite"></animate></circle><circle cx="210" cy="212" r="3" fill="#6ee7b7"><animate attributeName="opacity" values="1;.15;1" dur="1.75s" repeatCount="indefinite"></animate></circle><circle cx="210" cy="232" r="3" fill="#6ee7b7"><animate attributeName="opacity" values="1;.15;1" dur="2s" repeatCount="indefinite"></animate></circle>
+      </svg>
+    </div>
+    <div class="pcard__body" style="padding:24px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div style="font:700 14px/1 'Noto Sans JP',sans-serif;color:#d97a16">レガシーを、未来の力に。</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg viewBox="0 0 100 100" width="40" height="40" fill="none" aria-hidden="true" style="flex:none"><defs><linearGradient id="v3km-l" sc-camel-gradient-units="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#f0511e"></stop><stop offset="1" stop-color="#c8281c"></stop></linearGradient><linearGradient id="v3km-b" sc-camel-gradient-units="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#f0511e"></stop><stop offset=".42" stop-color="#f97a1f"></stop><stop offset="1" stop-color="#ffb21e"></stop></linearGradient></defs><path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#v3km-l)"></path><path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#v3km-b)" stroke="url(#v3km-b)" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div><div style="font:800 30px/1.05 Barlow,sans-serif;letter-spacing:-.01em;color:#7a4410">V-Kaimei</div><div style="font:600 11.5px/1.3 Barlow,sans-serif;color:#9c6a33">AI Legacy System Intelligence</div></div>
+      </div>
+      <p style="margin:0;font:500 13px/1.85 'Noto Sans JP',sans-serif;color:#6b4415">既存システムをAIで解析し、見える化・ドキュメント化。モダナイゼーションへの第一歩を支援。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#b0600f;background:#fbe3c6;padding:7px 10px;border-radius:999px">システム解析</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#b0600f;background:#fbe3c6;padding:7px 10px;border-radius:999px">ドキュメント生成</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#b0600f;background:#fbe3c6;padding:7px 10px;border-radius:999px">技術継承</span>
+      </div>
+      <div class="pcard__foot" style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(200,130,40,.18);display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div><div style="font:800 34px/1 Barlow,sans-serif;letter-spacing:-.02em;color:#d97a16">1/3</div><div style="font:500 11.5px/1.4 'Noto Sans JP',sans-serif;color:#9c6a33;margin-top:4px">現行調査の期間</div></div>
+        <a href="https://kaimei.v-ai.jp" style="display:flex;align-items:center;gap:8px;background:#e8862a;color:#fff;font:700 12.5px/1 'Noto Sans JP',sans-serif;padding:12px 18px;border-radius:999px;white-space:nowrap" style-hover="background:#cf7318;color:#fff">V-Kaimei を詳しく見る →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- CAD Check -->
+  <article class="pcard reveal" style="--i:2;--accent:#1e9e6b;--accent2:#5fe0b0;--glow:rgba(30,158,107,.30);--shadow:rgba(20,120,85,.12);border-radius:18px;overflow:hidden;background:linear-gradient(165deg,rgba(221,243,232,.82),rgba(243,251,247,.94) 40%,#eaf7f0);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column">
+    <div class="pcard__media" style="position:relative;aspect-ratio:8/5;overflow:hidden;border-bottom:1px solid rgba(14,62,120,.08)">
+      <img src="assets/shot-cad.webp" loading="lazy" alt="構造図面を拡大鏡で検査し、不整合箇所を指摘する図" width="800" height="500" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" decoding="async">
+      <div style="position:absolute;top:18%;bottom:20%;width:2px;left:24%;background:#22c55e;box-shadow:0 0 14px 4px rgba(34,197,94,.45);animation:vscancad 3.6s ease-in-out infinite alternate;pointer-events:none"></div>
+      <svg viewBox="0 0 800 500" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+        <circle cx="492" cy="190" r="78" fill="none" stroke="#15803d" stroke-width="3" opacity="0"><animate attributeName="r" values="78;100" dur="2.8s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="2.8s" begin="0s" repeatCount="indefinite"></animate></circle>
+        <circle cx="527" cy="132" r="6" fill="none" stroke="#ef4444" stroke-width="3" opacity="0"><animate attributeName="r" values="6;22" dur="1.8s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="1.8s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="506" cy="200" r="6" fill="none" stroke="#ef4444" stroke-width="3" opacity="0"><animate attributeName="r" values="6;22" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="1.8s" begin="0.6s" repeatCount="indefinite"></animate></circle><circle cx="524" cy="240" r="6" fill="none" stroke="#f59e0b" stroke-width="3" opacity="0"><animate attributeName="r" values="6;22" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="1.8s" begin="1.2s" repeatCount="indefinite"></animate></circle>
+        <circle cx="662" cy="134" r="13" fill="none" stroke="#16a34a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="13;26" dur="3s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="662" cy="180" r="13" fill="none" stroke="#16a34a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="13;26" dur="3s" begin="0.5s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="0.5s" repeatCount="indefinite"></animate></circle><circle cx="662" cy="224" r="13" fill="none" stroke="#16a34a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="13;26" dur="3s" begin="1s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1s" repeatCount="indefinite"></animate></circle><circle cx="662" cy="268" r="13" fill="none" stroke="#16a34a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="13;26" dur="3s" begin="1.5s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="1.5s" repeatCount="indefinite"></animate></circle><circle cx="662" cy="314" r="13" fill="none" stroke="#16a34a" stroke-width="2.5" opacity="0"><animate attributeName="r" values="13;26" dur="3s" begin="2s" repeatCount="indefinite"></animate><animate attributeName="opacity" values=".9;0" dur="3s" begin="2s" repeatCount="indefinite"></animate></circle>
+        <rect x="688" y="126" width="62" height="7" rx="3.5" fill="#15803d" opacity="0"><animate attributeName="opacity" values="0;.55;0" dur="3s" begin="0s" repeatCount="indefinite"></animate></rect><rect x="688" y="172" width="62" height="7" rx="3.5" fill="#15803d" opacity="0"><animate attributeName="opacity" values="0;.55;0" dur="3s" begin="0.5s" repeatCount="indefinite"></animate></rect><rect x="688" y="216" width="62" height="7" rx="3.5" fill="#15803d" opacity="0"><animate attributeName="opacity" values="0;.55;0" dur="3s" begin="1s" repeatCount="indefinite"></animate></rect><rect x="688" y="260" width="62" height="7" rx="3.5" fill="#15803d" opacity="0"><animate attributeName="opacity" values="0;.55;0" dur="3s" begin="1.5s" repeatCount="indefinite"></animate></rect><rect x="688" y="306" width="62" height="7" rx="3.5" fill="#15803d" opacity="0"><animate attributeName="opacity" values="0;.55;0" dur="3s" begin="2s" repeatCount="indefinite"></animate></rect>
+      </svg>
+    </div>
+    <div class="pcard__body" style="padding:24px 24px 26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div style="font:700 14px/1 'Noto Sans JP',sans-serif;color:#17845a">設計の品質を、確かなものに。</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg viewBox="0 0 100 100" width="40" height="40" fill="none" aria-hidden="true" style="flex:none"><defs><linearGradient id="v3cd-l" sc-camel-gradient-units="userSpaceOnUse" x1="6" y1="26" x2="42" y2="66"><stop offset="0" stop-color="#22a35a"></stop><stop offset="1" stop-color="#0e6b3a"></stop></linearGradient><linearGradient id="v3cd-b" sc-camel-gradient-units="userSpaceOnUse" x1="92" y1="4" x2="42" y2="98"><stop offset="0" stop-color="#1f9d55"></stop><stop offset=".42" stop-color="#3bbf7a"></stop><stop offset="1" stop-color="#4fd1c5"></stop></linearGradient></defs><path d="M2.5 25.3 L19.6 24.4 Q24.1 24.2 26.7 27.9 L43.3 52.1 Q45.9 55.8 42.3 58.5 L27.5 69.8 Q25.5 71.3 24.2 69.2 L0.3 29.4 Q-2 25.5 2.5 25.3 Z" fill="url(#v3cd-l)"></path><path d="M100 0 L41.5 99 Q39.6 101.6 37.6 99.4 C33 88 26 80 29.5 72.5 L44.5 57 C60 42 80 20 100 0 Z" fill="url(#v3cd-b)" stroke="url(#v3cd-b)" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div><div style="font:800 30px/1.05 Barlow,sans-serif;letter-spacing:-.01em;color:#0d4f38">CAD Check</div><div style="font:600 11.5px/1.3 Barlow,sans-serif;color:#3d7a63">AI-Powered Design Quality Assurance</div></div>
+      </div>
+      <p style="margin:0;font:500 13px/1.85 'Noto Sans JP',sans-serif;color:#13543c">図面・設計書をAIで自動チェック。ミスの防止と品質の標準化で、社会インフラを支える。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#12744e;background:#cdf0df;padding:7px 10px;border-radius:999px">AI自動検図</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#12744e;background:#cdf0df;padding:7px 10px;border-radius:999px">品質の標準化</span>
+        <span style="font:700 11.5px/1 'Noto Sans JP',sans-serif;color:#12744e;background:#cdf0df;padding:7px 10px;border-radius:999px">ナレッジ蓄積</span>
+      </div>
+      <div class="pcard__foot" style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(30,150,105,.18);display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div><div style="font:800 34px/1 Barlow,sans-serif;letter-spacing:-.02em;color:#17845a"><span data-count="50" data-prefix="−">−50</span><span style="font-size:18px">%</span></div><div style="font:500 11.5px/1.4 'Noto Sans JP',sans-serif;color:#3d7a63;margin-top:4px">レビュー工数</div></div>
+        <a href="https://brain.v-ai.jp/cad" style="display:flex;align-items:center;gap:8px;background:#1e9e6b;color:#fff;font:700 12.5px/1 'Noto Sans JP',sans-serif;padding:12px 18px;border-radius:999px;white-space:nowrap" style-hover="background:#178558;color:#fff">CAD Check を詳しく見る →</a>
+      </div>
+    </div>
+  </article>
+</div>
+</section>
+
+<!-- VALUE -->
+<section id="value" style="position:relative;background:linear-gradient(180deg,#eaf4fd 0%,#f5faff 100%);padding:88px 0 92px;overflow:hidden">
+  <div style="position:absolute;right:-8%;top:-20%;width:46%;height:80%;background:radial-gradient(ellipse,rgba(90,180,255,.18),transparent 68%);pointer-events:none"></div>
+  <div style="position:absolute;left:-10%;bottom:-30%;width:40%;height:70%;background:radial-gradient(ellipse,rgba(31,191,133,.12),transparent 68%);pointer-events:none"></div>
+<div style="position:relative;max-width:1240px;margin:0 auto;padding:0 28px">
+  <div style="max-width:720px">
+      <h2 style="margin:0;font:900 clamp(30px,3.4vw,46px)/1.32 'Noto Sans JP',sans-serif;color:#0b2f6b;letter-spacing:-.01em"><span style="white-space:nowrap">VNEXT AIプラットフォームが</span><br>もたらす<span style="color:#1366c9">4つの価値</span></h2>
+      <p style="margin:18px 0 0;font:500 15px/1.95 'Noto Sans JP',sans-serif;color:#31567f;max-width:480px;text-wrap:pretty">3つのプロダクトが1つの基盤で連携。<br>業務の生産性向上とDXの加速を、数字で実感いただけます。</p>
+  </div>
+
+  <div data-play="1" style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px">
+    <!-- 01 efficiency: before/after -->
+    <div style="background:rgba(255,255,255,.86);border:1px solid rgba(35,110,190,.14);border-radius:22px;padding:32px 32px 30px;box-shadow:0 18px 44px rgba(20,70,140,.08);display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font:900 22px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">業務の効率化</div>
+          <div style="font:500 12.5px/1.7 'Noto Sans JP',sans-serif;color:#476a91;margin-top:4px">AIによる自動化・支援で、作業時間を大幅に削減。</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font:800 54px/1 Barlow,sans-serif;letter-spacing:-.02em;background:linear-gradient(180deg,#1f7be0,#0d4f9e);-webkit-background-clip:text;background-clip:text;color:transparent"><span data-count="60" data-prefix="−">−60</span><span style="font-size:28px">%</span></div>
+          <div style="font:500 11px/1 'Noto Sans JP',sans-serif;color:#6f8cae;margin-top:6px">平均作業時間</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:18px;font:500 11px/1 'Noto Sans JP',sans-serif;color:#6f8cae">
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:6px;border-radius:3px;background:#dbe7f3"></span>導入前</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:6px;border-radius:3px;background:#1573d6"></span>導入後</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 64px;gap:16px;align-items:center">
+            <div><div style="font:700 13.5px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">情報検索</div><div style="font:600 11.5px/1 Barlow,sans-serif;color:#1573d6;margin-top:4px">V-Brain</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="height:10px;border-radius:5px;background:#dbe7f3"></div>
+              <div style="height:10px"><div data-anim="1" style="width:30%;height:100%;border-radius:5px;background:linear-gradient(90deg,#8ecbff,#1573d6);transform-origin:left;animation:vbarx 1.4s cubic-bezier(.2,.8,.2,1) 0.1s both;animation-play-state:paused;box-shadow:0 0 12px #8ecbff"></div></div>
+            </div>
+            <div style="font:800 22px/1 Barlow,sans-serif;color:#1573d6;text-align:right">−70%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 64px;gap:16px;align-items:center">
+            <div><div style="font:700 13.5px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">現行システム調査</div><div style="font:600 11.5px/1 Barlow,sans-serif;color:#e8862a;margin-top:4px">V-Kaimei</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="height:10px;border-radius:5px;background:#dbe7f3"></div>
+              <div style="height:10px"><div data-anim="1" style="width:33%;height:100%;border-radius:5px;background:linear-gradient(90deg,#f7c48c,#e8862a);transform-origin:left;animation:vbarx 1.4s cubic-bezier(.2,.8,.2,1) 0.3s both;animation-play-state:paused;box-shadow:0 0 12px #f7c48c"></div></div>
+            </div>
+            <div style="font:800 22px/1 Barlow,sans-serif;color:#e8862a;text-align:right">−67%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 64px;gap:16px;align-items:center">
+            <div><div style="font:700 13.5px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">図面レビュー</div><div style="font:600 11.5px/1 Barlow,sans-serif;color:#1e9e6b;margin-top:4px">CAD Check</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="height:10px;border-radius:5px;background:#dbe7f3"></div>
+              <div style="height:10px"><div data-anim="1" style="width:50%;height:100%;border-radius:5px;background:linear-gradient(90deg,#8fe3bf,#1e9e6b);transform-origin:left;animation:vbarx 1.4s cubic-bezier(.2,.8,.2,1) 0.5s both;animation-play-state:paused;box-shadow:0 0 12px #8fe3bf"></div></div>
+            </div>
+            <div style="font:800 22px/1 Barlow,sans-serif;color:#1e9e6b;text-align:right">−50%</div>
+          </div>
+      </div>
+    </div>
+
+    <!-- right stack -->
+    <div style="display:grid;grid-template-rows:repeat(3,auto);gap:14px">
+      <div class="vcard" style="background:rgba(255,255,255,.86);border:1px solid rgba(35,110,190,.14);border-radius:18px;padding:20px 24px;box-shadow:0 12px 30px rgba(20,70,140,.06);display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;align-items:center">
+        <div style="position:relative;width:88px;height:88px;display:flex;align-items:center;justify-content:center">
+          <svg width="88" height="88" viewBox="0 0 80 80" style="transform:rotate(-90deg)"><circle cx="40" cy="40" r="34" fill="none" stroke="#dcefe6" stroke-width="8"></circle><circle data-anim="1" cx="40" cy="40" r="34" fill="none" stroke="#1fbf85" stroke-width="8" stroke-linecap="round" stroke-dasharray="214" stroke-dashoffset="32" style="animation:vdonut 1.6s ease-out both;animation-play-state:paused"></circle></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f9e6b" stroke-width="1.6" style="position:absolute"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg>
+        </div>
+        <div><div style="font:900 17px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">知識の最大活用</div><div style="font:500 11.5px/1.6 'Noto Sans JP',sans-serif;color:#476a91;margin-top:2px">社内外のデータを横断的に活用</div></div>
+        <div style="font:800 34px/1 Barlow,sans-serif;color:#1f9e6b"><span data-count="85">85</span><span style="font-size:18px">%</span></div>
+      </div>
+      <div class="vcard" style="background:rgba(255,255,255,.86);border:1px solid rgba(35,110,190,.14);border-radius:18px;padding:20px 24px;box-shadow:0 12px 30px rgba(20,70,140,.06);display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;align-items:center">
+        <div style="position:relative;width:88px;height:64px">
+          <svg viewBox="0 0 88 64" style="width:88px;height:64px;overflow:visible">
+            <defs><linearGradient id="v3area2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8862a" stop-opacity=".35"></stop><stop offset="1" stop-color="#e8862a" stop-opacity="0"></stop></linearGradient></defs>
+            <path data-anim="1" d="M0 58 L18 52 L36 46 L52 34 L68 22 L88 6 L88 64 L0 64Z" fill="url(#v3area2)" style="animation:vfade 1s ease-out .9s both;animation-play-state:paused"></path>
+            <path data-anim="1" d="M0 58 L18 52 L36 46 L52 34 L68 22 L88 6" fill="none" stroke="#e8862a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="320" style="animation:vdraw 1.8s ease-out both;animation-play-state:paused"></path>
+            <circle cx="88" cy="6" r="4.5" fill="#e8862a"></circle>
+          </svg>
+        </div>
+        <div><div style="font:900 17px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">DXの加速</div><div style="font:500 11.5px/1.6 'Noto Sans JP',sans-serif;color:#476a91;margin-top:2px">新たな価値創出と競争力の強化</div></div>
+        <div style="font:800 34px/1 Barlow,sans-serif;color:#d97a16"><span data-count="2.5" data-dec="1">2.5</span><span style="font-size:18px">x</span></div>
+      </div>
+      <div class="vcard" style="background:linear-gradient(135deg,#0d3f80,#1462b8);border-radius:18px;padding:20px 24px;box-shadow:0 14px 34px rgba(13,63,128,.28);display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;align-items:center">
+        <div style="position:relative;width:88px;height:72px;display:flex;align-items:center;justify-content:center">
+          <span style="position:absolute;width:52px;height:52px;border-radius:50%;border:2px solid rgba(142,203,255,.6);animation:vring 2.4s ease-out infinite"></span>
+          <span style="position:absolute;width:52px;height:52px;border-radius:50%;border:2px solid rgba(142,203,255,.6);animation:vring 2.4s ease-out 1.2s infinite"></span>
+          <span style="position:relative;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><path d="M12 3l7 3v5.5c0 4.3-2.9 8.2-7 9.5-4.1-1.3-7-5.2-7-9.5V6l7-3z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+        </div>
+        <div><div style="font:900 17px/1.4 'Noto Sans JP',sans-serif;color:#fff">安心のセキュリティ</div><div style="font:500 11.5px/1.6 'Noto Sans JP',sans-serif;color:#cfe3fa;margin-top:2px">企業の大切な資産を安全に保護</div></div>
+        <div style="font:800 28px/1 Barlow,sans-serif;color:#fff">24/365</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;font:400 11.5px/1.6 'Noto Sans JP',sans-serif;color:#6f8cae">※数値は想定効果のイメージです。業務内容により異なります。</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="background:#fbfdff;padding:60px 0 64px">
+<div style="max-width:1240px;margin:0 auto;padding:0 28px">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
     <div>
-      <p class="eyebrow">VALUE</p>
-      <h2 data-i18n-html="value.h2">知る・解く・創る、<br>を一つの流れに</h2>
-      <p class="split__lead" data-i18n="value.lead">知識を集めるV-Brain、既存システムを読み解くV-Kaimei、設計の品質を守るCAD Check。三つは別々の道具ではなく、企業の資産を次の判断につなぐ一つの流れです。</p>
+            <h2 style="margin:0;font:800 30px/1.3 'Noto Sans JP',sans-serif;color:#0b2f6b">導入の流れ</h2>
+      <div style="margin-top:8px;font:700 16px/1.5 'Noto Sans JP',sans-serif;color:#1366c9">スムーズな導入で、すぐにAIの力を。</div>
     </div>
-    <div class="values">
-      <div class="reveal">
-        <h3 data-i18n="value.k1">知る</h3>
-        <h4 data-i18n="value.t1">散らばった知識を、答えに</h4>
-        <p data-i18n="value.d1">仕様書・議事録・Drive上の資料を横断して検索し、出典付きで回答。人が承認した文書だけが知識になります。</p>
-      </div>
-      <div class="reveal">
-        <h3 data-i18n="value.k2">解く</h3>
-        <h4 data-i18n="value.t2">触れなかった基幹系を、見える形に</h4>
-        <p data-i18n="value.d2">ソースコードと仕様書から構造と業務フローを再構成し、経営層に提示できるモダナイゼーション戦略へ。</p>
-      </div>
-      <div class="reveal">
-        <h3 data-i18n="value.k3">創る</h3>
-        <h4 data-i18n="value.t3">設計品質を、仕組みで守る</h4>
-        <p data-i18n="value.d3">図面と計算書の整合を自動で照合し、手戻りを減らす。チェック結果はナレッジとして蓄積されます。</p>
+  </div>
+  <div style="position:relative;margin-top:44px">
+    <div style="position:relative">
+      <div class="proc-track" style="position:absolute;left:10%;right:10%;top:37px;height:4px;border-radius:2px;background:#e1ecf7"></div>
+      <div class="proc-track" style="position:absolute;left:10%;right:10%;top:37px;height:4px"><div style="height:100%;border-radius:2px;background:linear-gradient(90deg,#1573d6,#1fbf85,#e8862a);animation:vtrack 6s ease-in-out infinite;box-shadow:0 0 12px rgba(21,115,214,.4)"></div></div>
+      <div class="proc-grid" style="position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px">
+        <div class="proc-step" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="width:78px;height:78px;border-radius:50%;background:#fff;border:2px solid #d6e5f5;display:flex;align-items:center;justify-content:center;animation:vstep 6s 0s infinite"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1573d6" stroke-width="1.6"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M9 11h.01M12.5 11h.01M16 11h.01"></path></svg></div>
+          <div style="font:700 15px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">ご相談・ヒアリング</div>
+          <span style="font:600 11px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#e3effc;padding:6px 10px;border-radius:999px">無料</span>
+        </div>
+        <div class="proc-step" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="width:78px;height:78px;border-radius:50%;background:#fff;border:2px solid #d6e5f5;display:flex;align-items:center;justify-content:center;animation:vstep 6s .9s infinite"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1573d6" stroke-width="1.6"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"></path><path d="M7.5 15h9"></path></svg></div>
+          <div style="font:700 15px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">ご提案・PoC検証</div>
+          <span style="font:600 11px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#e3effc;padding:6px 10px;border-radius:999px">2〜6週間</span>
+        </div>
+        <div class="proc-step" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="width:78px;height:78px;border-radius:50%;background:#fff;border:2px solid #d6e5f5;display:flex;align-items:center;justify-content:center;animation:vstep 6s 1.8s infinite"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1573d6" stroke-width="1.6"><rect x="3" y="4" width="18" height="6" rx="1.5"></rect><rect x="3" y="14" width="18" height="6" rx="1.5"></rect><path d="M7 7h.01M7 17h.01"></path></svg></div>
+          <div style="font:700 15px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">環境構築・連携</div>
+          <span style="font:600 11px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#e3effc;padding:6px 10px;border-radius:999px">1〜3ヶ月</span>
+        </div>
+        <div class="proc-step" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="width:78px;height:78px;border-radius:50%;background:#fff;border:2px solid #d6e5f5;display:flex;align-items:center;justify-content:center;animation:vstep 6s 2.7s infinite"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1573d6" stroke-width="1.6"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"></path></svg></div>
+          <div style="font:700 15px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">運用・サポート</div>
+          <span style="font:600 11px/1 'Noto Sans JP',sans-serif;color:#1462b8;background:#e3effc;padding:6px 10px;border-radius:999px">継続支援</span>
+        </div>
+        <div class="proc-step" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+          <div style="width:78px;height:78px;border-radius:50%;background:linear-gradient(160deg,#2a86e0,#0d4f9e);border:2px solid #1573d6;display:flex;align-items:center;justify-content:center;animation:vstep 6s 3.6s infinite"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><path d="M4 20h16M7 17v-4M12 17V9M17 17V6"></path><path d="M14 6h3v3"></path></svg></div>
+          <div style="font:700 15px/1.4 'Noto Sans JP',sans-serif;color:#0b2f6b">効果の最大化</div>
+          <span style="font:600 11px/1 'Noto Sans JP',sans-serif;color:#fff;background:#1573d6;padding:6px 10px;border-radius:999px">全社展開</span>
+        </div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
-<!-- ===================== 02 PROCESS ===================== -->
-<section id="steps" class="section section--tint">
-  <div class="section__inner">
-    <div class="process__head">
-      <h2 data-i18n="steps.h2">導入の流れ</h2>
-      <p data-i18n="steps.lead">1製品からの小さな開始を前提にしています。PoCの期間中は既存環境に手を入れません。</p>
-    </div>
-    <ul class="steps">
-      <li class="reveal">
-        <p class="step-no">01</p>
-        <h3 data-i18n="steps.t1">お問い合わせ・ヒアリング</h3>
-        <p data-i18n="steps.d1">課題と対象資産（文書・システム・図面）を整理し、適するプロダクトを提案します。</p>
-      </li>
-      <li class="reveal">
-        <p class="step-no">02</p>
-        <h3 data-i18n="steps.t2">PoC</h3>
-        <p data-i18n="steps.d2">実データの一部で効果を検証。評価基準は開始前に合意します。</p>
-      </li>
-      <li class="reveal">
-        <p class="step-no">03</p>
-        <h3 data-i18n="steps.t3">導入・構築</h3>
-        <p data-i18n="steps.d3">クラウド／オンプレミスいずれの環境にも構築。権限設計と運用ルールを一緒に決めます。</p>
-      </li>
-      <li class="reveal">
-        <p class="step-no">04</p>
-        <h3 data-i18n="steps.t4">運用・拡張</h3>
-        <p data-i18n="steps.d4">利用状況を見ながら対象範囲を広げ、他プロダクトへ同じ基盤上で展開します。</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===================== 03 SECURITY ===================== -->
-<section id="security" class="section section--dark">
-  <div class="section__inner split">
+<!-- SECURITY -->
+<section id="security" style="position:relative;background:linear-gradient(110deg,#07203f 0%,#0a2b52 55%,#0d3a6b 100%);padding:60px 0;overflow:hidden">
+  <div class="sec-grid" style="position:relative;max-width:1240px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;align-items:center">
     <div>
-      <p class="eyebrow">SECURITY</p>
-      <h2 data-i18n-html="sec.h2">企業データを、<br>企業の中に</h2>
-      <p class="split__lead" data-i18n="sec.lead">AIを使うために情報の管理を緩める必要はありません。三つのプロダクトは共通の権限基盤の上で動きます。</p>
+            <h2 style="margin:0;font:800 clamp(22px,2.4vw,29px)/1.5 'Noto Sans JP',sans-serif;color:#fff"><span style="white-space:nowrap">企業の大切なデータを、</span><br>安全に守る。</h2>
+      <p style="margin:16px 0 0;font:400 14px/1.9 'Noto Sans JP',sans-serif;color:#b9d4f2">堅牢なセキュリティ基盤と最新の技術で、企業のデータとシステムを保護します。</p>
     </div>
-    <div class="secgrid">
-      <div class="reveal">
-        <h3 data-i18n="sec.t1">部門・階層ごとのアクセス権限</h3>
-        <p data-i18n="sec.d1">閲覧範囲はフォルダ単位で設定。検索・回答・グラフ・原本ダウンロードまで同じ規則で制限されます。</p>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <div style="border-radius:12px;border:1px solid rgba(120,190,255,.2);background:rgba(20,80,150,.25);padding:16px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7cc2ff" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 12l2 2 4-4"></path></svg><div style="font:700 13px/1.5 'Noto Sans JP',sans-serif;color:#fff;margin-top:8px;white-space:nowrap">多層防御</div></div>
+      <div style="border-radius:12px;border:1px solid rgba(120,190,255,.2);background:rgba(20,80,150,.25);padding:16px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7cc2ff" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"></circle><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"></path></svg><div style="font:700 13px/1.5 'Noto Sans JP',sans-serif;color:#fff;margin-top:8px;white-space:nowrap">アクセス制御</div></div>
+      <div style="border-radius:12px;border:1px solid rgba(120,190,255,.2);background:rgba(20,80,150,.25);padding:16px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7cc2ff" stroke-width="1.6"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8.5 10V7.5a3.5 3.5 0 1 1 7 0V10"></path></svg><div style="font:700 13px/1.5 'Noto Sans JP',sans-serif;color:#fff;margin-top:8px;white-space:nowrap">データ暗号化</div></div>
+      <div style="border-radius:12px;border:1px solid rgba(120,190,255,.2);background:rgba(20,80,150,.25);padding:16px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7cc2ff" stroke-width="1.6"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v4h4M10 13h5M10 17h5"></path></svg><div style="font:700 13px/1.5 'Noto Sans JP',sans-serif;color:#fff;margin-top:8px;white-space:nowrap">法令準拠</div></div>
+    </div>
+    <!-- radar -->
+    <div class="sec-radar" style="position:relative;height:230px;display:flex;align-items:center;justify-content:center">
+      <div style="position:relative;width:220px;height:220px;border-radius:50%;overflow:hidden;background:radial-gradient(circle,rgba(40,120,210,.25),rgba(7,32,63,.2) 70%);border:1px solid rgba(120,190,255,.35)">
+        <div style="position:absolute;inset:36px;border-radius:50%;border:1px solid rgba(120,190,255,.25)"></div>
+        <div style="position:absolute;inset:72px;border-radius:50%;border:1px solid rgba(120,190,255,.25)"></div>
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(120,190,255,.18)"></div>
+        <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(120,190,255,.18)"></div>
+        <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(111,192,255,.55),rgba(111,192,255,0) 70deg,transparent 360deg);animation:vspin 4s linear infinite"></div>
       </div>
-      <div class="reveal">
-        <h3 data-i18n="sec.t2">機密情報の自動検知と隔離</h3>
-        <p data-i18n="sec.d2">取り込み時に認証情報・機密事項をスキャン。検知した文書は隔離され、人の確認なしにAIへ渡りません。</p>
-      </div>
-      <div class="reveal">
-        <h3 data-i18n="sec.t3">人による承認ゲート</h3>
-        <p data-i18n="sec.d3">AIが整形し、人が内容を承認。承認前の文書は検索対象になりません。</p>
-      </div>
-      <div class="reveal">
-        <h3 data-i18n="sec.t4">企業アカウントでの認証</h3>
-        <p data-i18n="sec.d4">Google Workspace等の企業アカウントに限定したログイン。原本はお客様環境内に保管されます。</p>
-      </div>
+      <svg width="74" height="86" viewBox="0 0 24 24" fill="rgba(10,43,82,.85)" stroke="#6fc0ff" stroke-width="1.1" style="position:absolute;filter:drop-shadow(0 0 14px rgba(90,180,255,.8))"><path d="M12 2.5l8 3.2v6.1c0 4.9-3.3 9.4-8 10.7-4.7-1.3-8-5.8-8-10.7V5.7l8-3.2z"></path><rect x="9" y="11" width="6" height="5" rx="1"></rect><path d="M10.4 11V9.6a1.6 1.6 0 1 1 3.2 0V11" fill="none"></path></svg>
     </div>
   </div>
 </section>
 
-<!-- ===================== 04 FAQ ===================== -->
-<section id="faq" class="section section--light">
-  <div class="section__inner split">
-    <div>
-      <h2 data-i18n="faq.h2">よくあるご質問</h2>
-    </div>
-    <ul class="faq">
-      <li class="reveal">
-        <span class="q" aria-hidden="true">Q</span>
-        <div>
-          <h3 data-i18n="faq.q1">1製品だけの導入は可能ですか？</h3>
-          <p data-i18n="faq.a1">可能です。多くのお客様がV-BrainまたはV-Kaimeiから開始し、必要に応じて同じ基盤上で拡張しています。</p>
-        </div>
-      </li>
-      <li class="reveal">
-        <span class="q" aria-hidden="true">Q</span>
-        <div>
-          <h3 data-i18n="faq.q2">CAD Checkは単体で使えますか？</h3>
-          <p data-i18n="faq.a2">現在はV-Brainのアドオンとして提供しています。図面チェック結果はV-Brainのナレッジとして蓄積されます。</p>
-        </div>
-      </li>
-      <li class="reveal">
-        <span class="q" aria-hidden="true">Q</span>
-        <div>
-          <h3 data-i18n="faq.q3">対応言語は？</h3>
-          <p data-i18n="faq.a3">日本語・英語・ベトナム語に対応。文書は日本語のまま取り込み、質問は日本語で行えます。</p>
-        </div>
-      </li>
-      <li class="reveal">
-        <span class="q" aria-hidden="true">Q</span>
-        <div>
-          <h3 data-i18n="faq.q4">オンプレミス環境に構築できますか？</h3>
-          <p data-i18n="faq.a4">クラウド（GCP等）とオンプレミスのどちらにも構築できます。要件に合わせてご提案します。</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
+<!-- CONTACT -->
 
-<!-- ===================== CONTACT =====================
-     Khuôn theo khối liên hệ của v-kaimei:
-     · nhãn 必須/任意 trên MỌI ô (quy ước form B2B Nhật), nối bằng aria-describedby
-     · lỗi hiện NGAY DƯỚI từng ô, không gom vào một dòng trạng thái chung
-     · 会社概要 nằm TRONG khối này, cột trái: khách doanh nghiệp Nhật tra thông tin
-       pháp nhân đúng lúc quyết định có gửi form hay không
-     · ô bẫy chống bot; ô đồng ý xử lý thông tin cá nhân là điều kiện để gửi
-     · ba trạng thái gửi, và khi hỏng thì CHỮ ĐÃ GÕ CÒN NGUYÊN                -->
-<section id="contact" class="section section--contact">
-  <div class="section__inner contact">
+<section id="contact" class="section section--contact" style="position:relative;background:#07142c url('assets/contact-skyline.jpg') center 38%/cover no-repeat;background-image:image-set(url('assets/contact-skyline-bg.webp') type('image/webp'),url('assets/contact-skyline.jpg') type('image/jpeg'))">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,38,.82) 0%,rgba(5,16,38,.72) 60%,rgba(5,16,38,.9) 100%);pointer-events:none"></div>
+  <div class="section__inner contact" style="position:relative;z-index:1">
 
     <div class="contact__intro">
       <h2 data-i18n="contact.h2">お問い合わせ</h2>
@@ -500,23 +645,56 @@
   </div>
 </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="site-footer__brand">
-    <img src="assets/vnext/vnext-logo-horizontal-light.svg" alt="VNEXT" width="92" height="26">
-    <span>Beyond IT, for a Better Tomorrow</span>
+<footer class="ft">
+  <div class="ft__inner">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <a href="#platform" aria-label="VNEXT ページの先頭へ"><img src="assets/vnext-logo-footer.svg" alt="VNEXT" width="92" height="26" loading="lazy"></a>
+        <p class="ft__tag">Beyond IT, for a Better Tomorrow</p>
+      </div>
+      <nav aria-label="フッターナビゲーション">
+        <ul class="ft__nav">
+          <li><a href="#products">プロダクト</a></li>
+          <li><a href="#value">提供価値</a></li>
+          <li><a href="#process">導入の流れ</a></li>
+          <li><a href="#security">セキュリティ</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="ft__bottom">
+      <small>© 2026 VNEXT JAPAN株式会社</small>
+      <a class="ft__totop" href="#platform">ページの先頭へ <span aria-hidden="true">↑</span></a>
+    </div>
   </div>
-  <nav>
-    <a href="https://brain.v-ai.jp">V-Brain</a>
-    <a href="https://kaimei.v-ai.jp">V-Kaimei</a>
-    <a href="https://brain.v-ai.jp/cad">CAD Check</a>
-    <a href="#" data-i18n="footer.privacy">プライバシーポリシー</a>
-  </nav>
-  <span data-i18n="footer.copy">© 2026 VNEXT JAPAN株式会社</span>
 </footer>
 
 <script src="assets/i18n.js"></script>
 <script src="assets/main.js" defer></script>
+
+<script>
+(function(){
+  var run = function(el) {
+    el.querySelectorAll('[data-anim]').forEach(function(a){ a.style.animationPlayState = 'running'; });
+    el.querySelectorAll('[data-count]').forEach(function(c){
+      var to = parseFloat(c.dataset.count), dec = +(c.dataset.dec||0), pre = c.dataset.prefix||'';
+      var t0 = performance.now(), d = 1400;
+      var step = function(t){
+        var p = Math.min(1,(t-t0)/d), e = 1-Math.pow(1-p,3);
+        c.textContent = pre+(to*e).toFixed(dec);
+        if(p<1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  };
+  var targets = [].slice.call(document.querySelectorAll('[data-play], #products'));
+  if(!('IntersectionObserver' in window)){ targets.forEach(run); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
+  }, {threshold: 0.3});
+  targets.forEach(function(t){ io.observe(t); });
+})();
+</script>
+
 </body>
 </html>

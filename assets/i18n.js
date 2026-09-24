@@ -54,6 +54,7 @@ window.I18N = {
     'cad.tag3': '品質の標準化',
     'cad.tag4': '手戻り削減',
     'cad.tag5': '設計ナレッジの蓄積',
+    'cad.tag6': '設計ルールの準拠',
     'cad.cta': 'CAD Check を詳しく見る',
 
     'platform.copy': '3つのプロダクトは、認証・アクセス権限・ログ・日本語対応LLM基盤を共有する一つのプラットフォーム上で動きます。導入は1製品から、拡張はデータを移さずに。',
@@ -108,8 +109,9 @@ window.I18N = {
     'faq.q4': 'オンプレミス環境に構築できますか？',
     'faq.a4': 'クラウド（GCP等）とオンプレミスのどちらにも構築できます。要件に合わせてご提案します。',
 
-    'contact.h2': 'お問い合わせ',
-    'contact.lead': '資料請求・デモ・PoCのご相談を受け付けています。2営業日以内に担当者よりご連絡します。',
+    'contact.h2': 'まずはお気軽に<br>ご相談ください',
+    'contact.lead': 'あなたのビジネスに最適なAI活用をご提案します。',
+    'contact.download': '資料ダウンロード',
     'form.required': '必須',
     'form.optional': '任意',
     'form.company': '会社名',
@@ -202,6 +204,7 @@ window.I18N = {
     'cad.tag3': 'Quality standardisation',
     'cad.tag4': 'Less rework',
     'cad.tag5': 'Design knowledge',
+    'cad.tag6': 'Rule compliance',
     'cad.cta': 'Explore CAD Check',
 
     'platform.copy': 'All three products run on one platform that shares authentication, access control, logging and a Japanese-capable LLM foundation. Start with a single product; expand without moving your data.',
@@ -256,8 +259,9 @@ window.I18N = {
     'faq.q4': 'Can it be built on-premises?',
     'faq.a4': 'It can be built on cloud (GCP and others) or on-premises. We propose to fit your requirements.',
 
-    'contact.h2': 'Contact us',
-    'contact.lead': 'We welcome requests for materials, demos and PoC discussions. Someone will get back to you within two business days.',
+    'contact.h2': 'Feel free to<br>reach out to us',
+    'contact.lead': 'We propose the best AI solutions for your business.',
+    'contact.download': 'Download Materials',
     'form.required': 'Required',
     'form.optional': 'Optional',
     'form.company': 'Company',
@@ -350,6 +354,7 @@ window.I18N = {
     'cad.tag3': 'Chuẩn hoá chất lượng',
     'cad.tag4': 'Giảm làm lại',
     'cad.tag5': 'Tích luỹ tri thức thiết kế',
+    'cad.tag6': 'Tuân thủ quy chuẩn thiết kế',
     'cad.cta': 'Tìm hiểu CAD Check',
 
     'platform.copy': 'Cả ba sản phẩm chạy trên một nền tảng dùng chung xác thực, phân quyền, nhật ký và nền LLM hỗ trợ tiếng Nhật. Bắt đầu từ một sản phẩm, mở rộng mà không phải di chuyển dữ liệu.',
@@ -404,8 +409,9 @@ window.I18N = {
     'faq.q4': 'Có triển khai on-premise được không?',
     'faq.a4': 'Có thể xây dựng trên cloud (GCP…) hoặc on-premise. Chúng tôi đề xuất theo đúng yêu cầu của bạn.',
 
-    'contact.h2': 'Liên hệ',
-    'contact.lead': 'Chúng tôi tiếp nhận yêu cầu tài liệu, demo và trao đổi PoC. Người phụ trách sẽ liên hệ trong vòng 2 ngày làm việc.',
+    'contact.h2': 'Đừng ngần ngại<br>liên hệ với chúng tôi',
+    'contact.lead': 'Chúng tôi đề xuất giải pháp ứng dụng AI tối ưu cho doanh nghiệp của bạn.',
+    'contact.download': 'Tải tài liệu',
     'form.required': 'Bắt buộc',
     'form.optional': 'Tùy chọn',
     'form.company': 'Tên công ty',
