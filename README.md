@@ -54,13 +54,29 @@ Xem trạng thái build:
 gh api repos/VNEXT-JAPAN-SOFTWARE/v-ai-jp/pages/builds/latest --jq .status
 ```
 
-### Khi gắn tên miền v-ai.jp
+### Tên miền v-ai.jp — đã gắn
 
-1. Trỏ DNS về GitHub Pages (4 bản ghi A: `185.199.108–111.153`, hoặc CNAME
-   `vnext-japan-software.github.io` cho subdomain).
-2. Thêm file `CNAME` ở thư mục gốc chứa đúng một dòng `v-ai.jp`.
-3. Sửa 3 URL trong `<head>` của `index.html` (`canonical`, `og:url`,
-   `og:image`) sang `https://v-ai.jp/` — có sẵn comment đánh dấu ngay trên đó.
+DNS trỏ 4 bản ghi A về GitHub Pages (`185.199.108–111.153`), file `CNAME` chứa
+`v-ai.jp`. `vnext-japan-software.github.io/v-ai-jp/` tự 301 về `https://v-ai.jp/`.
+
+⚠️ Mọi URL tuyệt đối trong `<head>` (`canonical`, `og:url`, `og:image`,
+`twitter:image`, JSON-LD) phải là `https://v-ai.jp/…`. Từ lúc gắn tên miền tới
+2026-09-28 chúng vẫn trỏ `github.io` — tức canonical chỉ vào một URL chuyển
+hướng ngược về chính trang này, và Google nhận hai tín hiệu trái nhau.
+
+## SEO
+
+| Thứ | Ở đâu | Ghi chú |
+|---|---|---|
+| `title`, `description` | `<head>` | Có chữ **V-AI** — chính tên miền, mà trước đó không xuất hiện lần nào trên trang |
+| Ảnh xem trước | `assets/img/og-image.png` | 1200×630 PNG. Đừng dùng `hero-platform.webp`: WebP không hiện được ở mọi bot xem trước, và nó 1376×768 chứ không phải cỡ đã khai |
+| Dữ liệu có cấu trúc | `<script type="application/ld+json">` | `Organization` · `WebSite` · `WebPage` · 3 `SoftwareApplication`. `@id` của V-Brain và V-Kaimei trùng `@id` trong prerender của hai site ấy để Google nối thành một thực thể. **Chỉ khai điều có thật** — không bịa địa chỉ, giá, hồ sơ mạng xã hội |
+| Heading | thân trang | 1 `h1` (khẩu hiệu); tên 3 sản phẩm là `h3`; khối `#products` có một `h2` ẩn khỏi mắt |
+| `robots.txt`, `sitemap.xml` | gốc repo | Một URL duy nhất; không khai `lastmod` vì trang đổi theo mỗi lần sửa |
+
+Thêm một khối mới có tiêu đề thì dùng thẻ heading thật (`h2`/`h3` kèm
+`style="margin:0;font:…"`), đừng dùng `<div>` to chữ — với bot, `<div>` không
+phải tiêu đề.
 
 Repo đang **public** vì GitHub Pages chỉ hỗ trợ repo public ở gói free của org.
 Muốn giữ private thì chuyển sang Cloudflare Pages hoặc Vercel.
@@ -69,9 +85,9 @@ Muốn giữ private thì chuyển sang Cloudflare Pages hoặc Vercel.
 
 | Mục | Vị trí | Việc cần làm |
 |---|---|---|
-| Form liên hệ | `assets/main.js` | Nối API gửi mail / form service; hiện chỉ validate client-side rồi báo "chưa cấu hình" |
+| Form liên hệ | script cuối `index.html` | Nối form service — chưa cấu hình nơi nhận. Repo và site đều public: chỉ dùng dịch vụ cần ID công khai (vd. HubSpot portal/form ID), không đặt API key bí mật vào trang |
 | 会社概要 | `#company` | Bổ sung 所在地・設立・代表者・電話番号 khi có thông tin chính thức |
-| Privacy policy | footer + form note | Link đang là `#` |
+| Privacy policy | footer + form note | Trỏ `https://vnext.co.jp/privacy-policy.html` (chính sách cấp công ty). Chưa có văn bản 利用規約 riêng nên link ấy đã gỡ |
 
 ## Ảnh minh hoạ sản phẩm
 
@@ -90,9 +106,21 @@ bằng file gốc chưa xử lý.
 Thay ảnh khác: giữ đúng tỉ lệ 8:5, xuất cả `.webp` và `.png` cùng tên, rồi cập
 nhật khoá `brain.alt` / `kaimei.alt` / `cad.alt` trong `i18n.js` cho cả ba ngôn ngữ.
 
-## Ba ngôn ngữ
+## Ngôn ngữ — hiện CHỈ tiếng Nhật
 
-日本語 (mặc định) · English · Tiếng Việt.
+> ⚠️ **Mục này mô tả bản trước 2026-09-25.** Đợt làm lại LP (`7388aba`, `b47eb71`) bỏ hẳn
+> cơ chế đổi ngôn ngữ: `index.html` không còn nạp `assets/i18n.js`, không còn thuộc tính
+> `data-i18n` nào. Biểu tượng 🌐 "JA" trên header chỉ là trang trí — một `<div>`, không có
+> script, bấm không đổi gì.
+>
+> **Quyết định 2026-09-28:** giữ trang một ngôn ngữ, SEO chỉ tiếng Nhật; tiếng Anh/Việt làm
+> sau. Khi làm thì **mỗi ngôn ngữ một URL** (`/en/`, `/vi/`) kèm `hreflang` hai chiều và
+> `x-default` — đừng dựng lại kiểu đổi chữ bằng JS trên cùng một URL như dưới đây: Google chỉ
+> index bản HTML gốc, nên hai bản kia không bao giờ lên kết quả tìm kiếm.
+>
+> `assets/i18n.js` giữ lại làm nguồn câu chữ cho ngày đó.
+
+Bản cũ: 日本語 (mặc định) · English · Tiếng Việt.
 
 - Từ điển: [assets/i18n.js](assets/i18n.js) — 113 khoá × 3 ngôn ngữ, nhúng thẳng
   bằng `<script>` nên không cần `fetch`, không nháy chữ khi tải.
