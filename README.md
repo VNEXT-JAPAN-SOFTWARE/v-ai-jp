@@ -73,6 +73,7 @@ hướng ngược về chính trang này, và Google nhận hai tín hiệu trá
 | Dữ liệu có cấu trúc | `<script type="application/ld+json">` | `Organization` · `WebSite` · `WebPage` · 3 `SoftwareApplication`. `@id` của V-Brain và V-Kaimei trùng `@id` trong prerender của hai site ấy để Google nối thành một thực thể. **Chỉ khai điều có thật** — không bịa địa chỉ, giá, hồ sơ mạng xã hội |
 | Heading | thân trang | 1 `h1` (khẩu hiệu); tên 3 sản phẩm là `h3`; khối `#products` có một `h2` ẩn khỏi mắt |
 | `robots.txt`, `sitemap.xml` | gốc repo | Một URL duy nhất; không khai `lastmod` vì trang đổi theo mỗi lần sửa |
+| Favicon | gốc repo: `favicon.ico` (16/32/48), `favicon-192.png`, `apple-touch-icon.png` (180) | **Phải vuông 1:1** — Google không hiện favicon lệch tỉ lệ trên trang kết quả. `assets/vnext/vnext-favicon-*.png` là 64×68 và 180×190 nên không dùng được. Dựng từ `assets/vnext/vnext-mark.png`, đệm cho vuông; bản apple-touch nền **trắng** vì iOS tô đen chỗ trong suốt |
 
 Thêm một khối mới có tiêu đề thì dùng thẻ heading thật (`h2`/`h3` kèm
 `style="margin:0;font:…"`), đừng dùng `<div>` to chữ — với bot, `<div>` không
