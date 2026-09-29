@@ -75,6 +75,13 @@ hướng ngược về chính trang này, và Google nhận hai tín hiệu trá
 | `robots.txt`, `sitemap.xml` | gốc repo | Một URL duy nhất; không khai `lastmod` vì trang đổi theo mỗi lần sửa |
 | Favicon | gốc repo: `favicon.ico` (16/32/48), `favicon-192.png`, `apple-touch-icon.png` (180) | **Phải vuông 1:1** — Google không hiện favicon lệch tỉ lệ trên trang kết quả. `assets/vnext/vnext-favicon-*.png` là 64×68 và 180×190 nên không dùng được. Dựng từ `assets/vnext/vnext-mark.png`, đệm cho vuông; bản apple-touch nền **trắng** vì iOS tô đen chỗ trong suốt |
 
+**Hiệu năng (Lighthouse mobile, 2026-09-29):** Perf 58 → 80, FCP 7,4 s → 2,7 s, LCP 10,1 s → 4,4 s,
+CLS giữ 0,044. Hai việc làm nên con số ấy:
+- Font Google tải **không chặn lượt vẽ đầu** (`media="print"` + `onload`, kèm `<noscript>`). File CSS
+  của nó 119 KB và từng chặn vẽ ~1,5 s. Đừng trả nó về `rel="stylesheet"` trần.
+- `assets/hero-platform.webp` (phần tử LCP) nén lại WebP q76: 432 → 191 KB, cùng cỡ 1376×768.
+  So pixel với bản cũ: không khác ở ngưỡng nhìn thấy được.
+
 Thêm một khối mới có tiêu đề thì dùng thẻ heading thật (`h2`/`h3` kèm
 `style="margin:0;font:…"`), đừng dùng `<div>` to chữ — với bot, `<div>` không
 phải tiêu đề.
